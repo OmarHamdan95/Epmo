@@ -15,6 +15,7 @@ public sealed class User : BaseAuditableEntity
 
     public User(long id) => Id = id;
 
+    public User(){}
     public string? Name { get; private set; }
 
     public string? Email { get; private set; }

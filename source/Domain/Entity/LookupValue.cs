@@ -11,4 +11,5 @@ public class LookupValue :  LookupBase
     public long? Order { get; set; }
     public virtual bool IsSystem { get; set; }
     public string? Color { get; set; }
+    public virtual Translation? Translation { get; set; }
 }

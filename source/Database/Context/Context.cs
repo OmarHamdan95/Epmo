@@ -14,6 +14,7 @@ public sealed class Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        //System.Diagnostics.Debugger.Launch();
         base.OnModelCreating(builder);
 
         var domainTypes = Assembly

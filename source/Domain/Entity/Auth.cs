@@ -16,6 +16,7 @@ public sealed class Auth : BaseAuditableEntity
         Roles = Roles.User;
     }
 
+    public Auth(long id) => Id = id;
     public Auth() { }
 
     public string? Login { get; }

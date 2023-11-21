@@ -2,7 +2,7 @@
 
 namespace Architecture.Domain.Common;
 
-public class LookupBase: BaseAuditableEntity ,IAuditable, ISoftDeletable
+public abstract class LookupBase: BaseAuditableEntity ,IAuditable, ISoftDeletable
 {
     public string? Value { get; set; }
     public virtual DateTime? ValidFrom { get; set; }

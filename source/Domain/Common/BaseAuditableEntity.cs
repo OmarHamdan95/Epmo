@@ -2,7 +2,7 @@
 
 namespace Architecture.Domain.Common;
 
-public class BaseAuditableEntity: BaseEntity  , IAuditable , ISoftDeletable
+public abstract class BaseAuditableEntity : BaseEntity , IAuditable , ISoftDeletable
 {
     public string? CreatedBy { get; set; }
     public DateTime? CreatedDate { get; set; }
