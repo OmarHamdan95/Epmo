@@ -1,6 +1,6 @@
 namespace Architecture.Domain;
 
-public sealed class Auth : Entity
+public sealed class Auth : BaseAuditableEntity
 {
     public Auth
     (
@@ -18,15 +18,15 @@ public sealed class Auth : Entity
 
     public Auth() { }
 
-    public string Login { get; }
+    public string? Login { get; }
 
-    public string Password { get; private set; }
+    public string? Password { get; private set; }
 
     public Guid Salt { get; }
 
     public Roles Roles { get; }
 
-    public User User { get; }
+    public User? User { get; }
 
     public void UpdatePassword(string password) => Password = password;
 }

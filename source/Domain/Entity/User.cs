@@ -1,6 +1,6 @@
 namespace Architecture.Domain;
 
-public sealed class User : Entity
+public sealed class User : BaseAuditableEntity
 {
     public User
     (
@@ -15,9 +15,9 @@ public sealed class User : Entity
 
     public User(long id) => Id = id;
 
-    public string Name { get; private set; }
+    public string? Name { get; private set; }
 
-    public string Email { get; private set; }
+    public string? Email { get; private set; }
 
     public Status Status { get; private set; }
 

@@ -13,11 +13,12 @@ builder.Services.AddMediator(nameof(Architecture));
 builder.Services.AddSwaggerDefault();
 builder.Services.AddControllers().AddJsonOptions().AddAuthorizationPolicy();
 
+
 var application = builder.Build();
 
 application.UseException();
 application.UseHsts().UseHttpsRedirection();
-application.UseLocalization("en", "pt");
+application.UseLocalization("en", "ar");
 application.UseResponseCompression();
 application.UseStaticFiles();
 application.UseSwagger().UseSwaggerUI();

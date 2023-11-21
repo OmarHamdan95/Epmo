@@ -1,6 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <Nullable>enable</Nullable>
+    </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="DotNetCore.Domain" />
+        <PackageReference Include="MediatR" />
     </ItemGroup>
     <ItemGroup>
         <Using Include="DotNetCore.Domain" />
