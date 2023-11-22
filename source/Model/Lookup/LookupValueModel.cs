@@ -10,5 +10,5 @@ public class LookupValueModel
     public LookupValueModel? Parent { get; init; }
 
     public long? Order { get; init; }
-    public TranslationModel? TranslationModel { get; init; }
+    public TranslationModel? Translation { get; init; }
 }

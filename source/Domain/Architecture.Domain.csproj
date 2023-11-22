@@ -4,6 +4,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="DotNetCore.Domain" />
+        <PackageReference Include="Mapster" />
         <PackageReference Include="MediatR" />
         <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" />
     </ItemGroup>

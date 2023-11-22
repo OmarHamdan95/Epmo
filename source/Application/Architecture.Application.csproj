@@ -5,7 +5,6 @@
     <ItemGroup>
         <PackageReference Include="DotNetCore.Results" />
         <PackageReference Include="DotNetCore.Security" />
-        <PackageReference Include="Mapster" />
         <PackageReference Include="Microsoft.Extensions.Localization" />
     </ItemGroup>
     <ItemGroup>

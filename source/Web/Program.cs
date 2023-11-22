@@ -10,7 +10,9 @@ builder.Services.AddJsonStringLocalizer();
 builder.Services.AddHashService();
 builder.Services.AddJwtService();
 builder.Services.AddAuthorization().AddAuthentication().AddJwtBearer();
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Architecture.Application._IAssemblyMark).Assembly));
+
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 builder.Services.AddContext<Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(Context))));
 builder.Services.AddClassesMatchingInterfaces(nameof(Architecture));
 
@@ -31,5 +33,7 @@ application.UseSwagger().UseSwaggerUI();
 application.UseRouting();
 application.MapControllers();
 application.MapFallbackToFile("index.html");
+
+application.ConfigureMapster();
 
 application.Run();
