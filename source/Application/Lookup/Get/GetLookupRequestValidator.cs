@@ -1,6 +1,6 @@
 namespace Architecture.Application;
 
-public sealed class GetLookupRequestValidator : AbstractValidator<GetUserRequest>
+public sealed class GetLookupRequestValidator : AbstractValidator<GetLookupRequest>
 {
     public GetLookupRequestValidator() => RuleFor(request => request.Id).Id();
 }

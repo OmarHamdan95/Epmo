@@ -26,7 +26,7 @@ public sealed class Context : DbContext
             .GetTypes()
             .Where(
                 myType =>
-                    (myType.IsClass || myType.IsSealed) && !myType.IsAbstract && myType.IsSubclassOf(typeof(BaseEntity))
+                    (myType.IsClass) && !myType.IsAbstract && myType.IsSubclassOf(typeof(BaseEntity))
             )
             .ToList();
 
