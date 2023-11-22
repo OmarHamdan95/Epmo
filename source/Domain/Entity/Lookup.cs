@@ -7,7 +7,6 @@ public class Lookup : LookupBase
     public Lookup(string? lookupCode, Translation? translation , List<LookupValue>? lookupValues , string? dataType , Lookup? parent)
     {
         Translation = translation;
-        LookupCode = lookupCode;
         LookupValues = lookupValues;
         DataType = dataType;
         Parent = parent;
@@ -20,7 +19,6 @@ public class Lookup : LookupBase
     public virtual List<LookupValue>? LookupValues { get; set; }
     public virtual bool IsSystem { get; set; }
     public virtual string? DataType { get; set; }
-    public virtual string? LookupCode { get; set; }
     public virtual Translation? Translation { get; set; }
 
 
