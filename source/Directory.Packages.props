@@ -9,12 +9,14 @@
     <PackageVersion Include="DotNetCore.Domain" Version="18.2.0" />
     <PackageVersion Include="DotNetCore.EntityFrameworkCore" Version="18.2.0" />
     <PackageVersion Include="DotNetCore.Logging" Version="18.2.0" />
-    <PackageVersion Include="DotNetCore.Mediator" Version="18.2.0" />
     <PackageVersion Include="DotNetCore.Objects" Version="18.2.0" />
+    <PackageVersion Include="DotNetCore.Results" Version="18.2.0" />
     <PackageVersion Include="DotNetCore.Security" Version="18.2.0" />
     <PackageVersion Include="DotNetCore.Services" Version="18.2.0" />
     <PackageVersion Include="Humanizer.Core" Version="2.14.1" />
+    <PackageVersion Include="Mapster" Version="7.4.0" />
     <PackageVersion Include="MediatR" Version="12.2.0" />
+    <PackageVersion Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="5.1.0" />
     <PackageVersion Include="Microsoft.AspNetCore.SpaProxy" Version="8.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />

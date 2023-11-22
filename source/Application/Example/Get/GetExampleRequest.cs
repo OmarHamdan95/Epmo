@@ -1,3 +1,3 @@
 namespace Architecture.Application;
 
-public sealed record GetExampleRequest(long Id);
+public sealed record GetExampleRequest(long Id) : IRequest<Result<ExampleModel>>;

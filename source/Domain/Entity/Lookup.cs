@@ -4,11 +4,13 @@ public class Lookup : BaseAuditableEntity
 {
     public Lookup(){}
 
-    public Lookup(string? lookupCode, Translation translation , List<LookupValue>? lookupValues)
+    public Lookup(string? lookupCode, Translation? translation , List<LookupValue>? lookupValues , string? dataType , Lookup? parent)
     {
         Translation = translation;
         LookupCode = lookupCode;
         LookupValues = lookupValues;
+        DataType = dataType;
+        Parent = parent;
     }
 
     public Lookup(long id) => Id = id;

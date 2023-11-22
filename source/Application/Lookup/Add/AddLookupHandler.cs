@@ -1,7 +1,8 @@
-﻿namespace Architecture.Application.Lookup.Add;
+﻿using Mapster;
+namespace Architecture.Application;
 using static System.Net.HttpStatusCode;
 
-public sealed record AddLookupHandler : IHandler<AddLookupRequest, long>
+public sealed record AddLookupHandler : IRequestHandler<AddLookupRequest, Result<long>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly ILookupRepository _lookupRepository;
@@ -17,70 +18,11 @@ public sealed record AddLookupHandler : IHandler<AddLookupRequest, long>
         _lookupRepository = lookupRepository;
     }
 
-    public async Task<Result<long>> HandleAsync(AddLookupRequest request)
+    public async Task<Result<long>> Handle(AddLookupRequest request , CancellationToken cancellationToken)
     {
 
-        var Translation = new Translation()
-        {
-            Code = "Test",
-            TranslationValues = new List<TranslationValue>()
-            {
-                new TranslationValue()
-                {
-                    Code = "Test01",
-                    TransaltionValue = "TestTR"
-                }
-            }
-        };
-
-        var LookupValue = new List<LookupValue>()
-        {
-            new LookupValue()
-            {
-                Code = "raed",
-                Translation = new Translation()
-                {
-                    Code = "raed",
-                    TranslationValues = new List<TranslationValue>()
-                    {
-                        new TranslationValue()
-                        {
-                            Code = "raed01",
-                            TransaltionValue = "raed"
-                        },
-                        new TranslationValue()
-                        {
-                            Code = "raed001",
-                            TransaltionValue = "raed"
-                        }
-                    }
-                }
-            },
-             new LookupValue()
-            {
-                Code = "omar",
-                Translation = new Translation()
-                {
-                    Code = "omar",
-                    TranslationValues = new List<TranslationValue>()
-                    {
-                        new TranslationValue()
-                        {
-                            Code = "omar01",
-                            TransaltionValue = "omar"
-                        },
-                        new TranslationValue()
-                        {
-                            Code = "omar001",
-                            TransaltionValue = "omar"
-                        }
-                    }
-                }
-            }
-        };
-
-        var lookup = new Domain.Lookup(request.LookupCode, Translation , LookupValue);
-
+        var lookup = new Lookup(request.LookupCode, request.TranslationModel.Adapt<Translation>() ,
+            request.LookupValueModels.Adapt<List<LookupValue>>(),request.dataType,request.parent.Adapt<Lookup>());
 
         await _lookupRepository.AddAsync(lookup);
 

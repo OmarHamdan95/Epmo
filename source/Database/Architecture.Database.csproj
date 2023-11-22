@@ -1,4 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <Nullable>annotations</Nullable>
+    </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="DotNetCore.EntityFrameworkCore" />
         <PackageReference Include="DotNetCore.Objects" />

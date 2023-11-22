@@ -1,4 +1,4 @@
-﻿using Architecture.Application.Lookup.Add;
+﻿using Architecture.Application;
 using Architecture.Model.Lookup;
 
 namespace Architecture.Web;
@@ -8,8 +8,8 @@ namespace Architecture.Web;
 public sealed class LookupController : BaseController
 {
     [HttpPost]
-    public IActionResult Add(AddLookupRequest request) => Mediator.HandleAsync<AddLookupRequest, long>(request).ApiResult();
+    public IActionResult Add(AddLookupRequest request) => Mediator.Send(request).ApiResult();
 
     [HttpGet("{id}")]
-    public IActionResult Get(long id) => Mediator.HandleAsync<GetLookupRequest, LookupModel>(new GetLookupRequest(id)).ApiResult();
+    public IActionResult Get(long id) => Mediator.Send(new GetLookupRequest(id)).ApiResult();
 }

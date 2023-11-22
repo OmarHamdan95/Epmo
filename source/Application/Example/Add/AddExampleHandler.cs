@@ -2,7 +2,7 @@ using static System.Net.HttpStatusCode;
 
 namespace Architecture.Application;
 
-public sealed record AddExampleHandler : IHandler<AddExampleRequest, long>
+public sealed record AddExampleHandler : IRequestHandler<AddExampleRequest, Result<long>>
 {
     private readonly IExampleRepository _exampleRepository;
     private readonly IUnitOfWork _unitOfWork;
@@ -17,7 +17,7 @@ public sealed record AddExampleHandler : IHandler<AddExampleRequest, long>
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Result<long>> HandleAsync(AddExampleRequest request)
+    public async Task<Result<long>> Handle(AddExampleRequest request ,CancellationToken cancellationToken)
     {
         var entity = new Example(request.Name);
 
@@ -27,4 +27,6 @@ public sealed record AddExampleHandler : IHandler<AddExampleRequest, long>
 
         return new Result<long>(Created, entity.Id);
     }
+
+
 }

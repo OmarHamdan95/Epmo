@@ -1,3 +1,3 @@
 namespace Architecture.Application;
 
-public sealed record GridExampleRequest : GridParameters;
+public sealed record GridExampleRequest : GridParameters , IRequest<Result<Grid<ExampleModel>>>;

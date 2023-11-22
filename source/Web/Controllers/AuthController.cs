@@ -6,5 +6,5 @@ public sealed class AuthController : BaseController
 {
     [AllowAnonymous]
     [HttpPost]
-    public IActionResult Auth(AuthRequest request) => Mediator.HandleAsync<AuthRequest, AuthResponse>(request).ApiResult();
+    public IActionResult Auth(AuthRequest request) => Mediator.Send(request).ApiResult();
 }

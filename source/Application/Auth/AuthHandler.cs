@@ -2,7 +2,7 @@ using static System.Net.HttpStatusCode;
 
 namespace Architecture.Application;
 
-public sealed record AuthHandler : IHandler<AuthRequest, AuthResponse>
+public sealed record AuthHandler : IRequestHandler<AuthRequest, Result<AuthResponse>>
 {
     private readonly IAuthRepository _authRepository;
     private readonly IHashService _hashService;
@@ -23,7 +23,7 @@ public sealed record AuthHandler : IHandler<AuthRequest, AuthResponse>
         _stringLocalizer = stringLocalizer;
     }
 
-    public async Task<Result<AuthResponse>> HandleAsync(AuthRequest request)
+    public async Task<Result<AuthResponse>> Handle(AuthRequest request , CancellationToken cancellationToken)
     {
         var unauthorizedResult = new Result<AuthResponse>(Unauthorized, _stringLocalizer[nameof(Unauthorized)]);
 
@@ -39,4 +39,5 @@ public sealed record AuthHandler : IHandler<AuthRequest, AuthResponse>
 
         return new Result<AuthResponse>(OK, response);
     }
+
 }

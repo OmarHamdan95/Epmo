@@ -1,3 +1,3 @@
 namespace Architecture.Application;
 
-public sealed record GridUserRequest : GridParameters;
+public sealed record GridUserRequest : GridParameters , IRequest<Result<Grid<UserModel>>>;

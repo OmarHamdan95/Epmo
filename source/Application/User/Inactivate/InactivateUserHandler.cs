@@ -2,7 +2,7 @@ using static System.Net.HttpStatusCode;
 
 namespace Architecture.Application;
 
-public sealed record InactivateUserHandler : IHandler<InactivateUserRequest>
+public sealed record InactivateUserHandler : IRequestHandler<InactivateUserRequest , Result>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IUserRepository _userRepository;
@@ -17,7 +17,7 @@ public sealed record InactivateUserHandler : IHandler<InactivateUserRequest>
         _userRepository = userRepository;
     }
 
-    public async Task<Result> HandleAsync(InactivateUserRequest request)
+    public async Task<Result> Handle(InactivateUserRequest request , CancellationToken cancellationToken)
     {
         var user = new User(request.Id);
 

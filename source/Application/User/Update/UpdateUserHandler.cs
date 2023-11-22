@@ -2,7 +2,7 @@ using static System.Net.HttpStatusCode;
 
 namespace Architecture.Application;
 
-public sealed record UpdateUserHandler : IHandler<UpdateUserRequest>
+public sealed record UpdateUserHandler : IRequestHandler<UpdateUserRequest, Result>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IUserRepository _userRepository;
@@ -17,7 +17,7 @@ public sealed record UpdateUserHandler : IHandler<UpdateUserRequest>
         _userRepository = userRepository;
     }
 
-    public async Task<Result> HandleAsync(UpdateUserRequest request)
+    public async Task<Result> Handle(UpdateUserRequest request , CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetAsync(request.Id);
 

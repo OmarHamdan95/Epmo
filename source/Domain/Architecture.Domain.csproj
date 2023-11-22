@@ -1,10 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-      <Nullable>enable</Nullable>
+      <Nullable>annotations</Nullable>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="DotNetCore.Domain" />
         <PackageReference Include="MediatR" />
+        <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" />
     </ItemGroup>
     <ItemGroup>
         <Using Include="DotNetCore.Domain" />

@@ -9,8 +9,12 @@ namespace Architecture.Database;
 
 public sealed class Context : DbContext
 {
-    //private readonly IMediator _mediator;
-    public Context(DbContextOptions options ) : base(options) { }
+    private readonly IMediator _mediator;
+
+    public Context(DbContextOptions options, IMediator mediator) : base(options)
+    {
+        _mediator = mediator;
+    }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -22,7 +26,7 @@ public sealed class Context : DbContext
             .GetTypes()
             .Where(
                 myType =>
-                    myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(BaseEntity))
+                    (myType.IsClass || myType.IsSealed) && !myType.IsAbstract && myType.IsSubclassOf(typeof(BaseEntity))
             )
             .ToList();
 
@@ -53,10 +57,10 @@ public sealed class Context : DbContext
     //     //base on
     // }
 
-    public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new CancellationToken())
+    public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
+        CancellationToken cancellationToken = new CancellationToken())
     {
-        //await _mediator.DispatchDomainEvents(this);
+        await _mediator.DispatchDomainEvents(this);
         return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
     }
 }
-

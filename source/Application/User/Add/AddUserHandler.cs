@@ -2,7 +2,7 @@ using static System.Net.HttpStatusCode;
 
 namespace Architecture.Application;
 
-public sealed record AddUserHandler : IHandler<AddUserRequest, long>
+public sealed record AddUserHandler : IRequestHandler<AddUserRequest, Result<long>>
 {
     private readonly IAuthRepository _authRepository;
     private readonly IHashService _hashService;
@@ -23,7 +23,7 @@ public sealed record AddUserHandler : IHandler<AddUserRequest, long>
         _userRepository = userRepository;
     }
 
-    public async Task<Result<long>> HandleAsync(AddUserRequest request)
+    public async Task<Result<long>> Handle(AddUserRequest request , CancellationToken cancellationToken)
     {
         var user = new User(request.Name, request.Email);
 

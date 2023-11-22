@@ -2,7 +2,7 @@ using static System.Net.HttpStatusCode;
 
 namespace Architecture.Application;
 
-public sealed record UpdateExampleHandler : IHandler<UpdateExampleRequest>
+public sealed record UpdateExampleHandler : IRequestHandler<UpdateExampleRequest , Result>
 {
     private readonly IExampleRepository _exampleRepository;
     private readonly IUnitOfWork _unitOfWork;
@@ -17,7 +17,7 @@ public sealed record UpdateExampleHandler : IHandler<UpdateExampleRequest>
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Result> HandleAsync(UpdateExampleRequest request)
+    public async Task<Result> Handle(UpdateExampleRequest request , CancellationToken cancellationToken)
     {
         var entity = new Example(request.Id, request.Name);
 

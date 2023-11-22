@@ -1,5 +1,6 @@
 namespace Architecture.Application;
 
+
 public sealed class AuthRequestValidator : AbstractValidator<AuthRequest>
 {
     public AuthRequestValidator()

@@ -1,6 +1,7 @@
-﻿using Architecture.Model.Translation;
+﻿using Architecture.Model.Lookup;
+using Architecture.Model.Translation;
+namespace Architecture.Application;
 
-namespace Architecture.Application.Lookup.Add;
-
-public  sealed record AddLookupRequest (string LookupCode,TranslationModel TranslationModel);
+public  sealed record AddLookupRequest (string LookupCode,TranslationModel? TranslationModel ,
+    List<LookupValueModel>? LookupValueModels , string? dataType ,  LookupModel? parent) : IRequest<Result<long>>;
 

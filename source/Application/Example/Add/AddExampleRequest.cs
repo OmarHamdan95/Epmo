@@ -1,3 +1,3 @@
 namespace Architecture.Application;
 
-public sealed record AddExampleRequest(string Name);
+public sealed record AddExampleRequest(string Name) : IRequest<Result<long>>;

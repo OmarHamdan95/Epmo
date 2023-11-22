@@ -1,3 +1,8 @@
+
+
+
+using MediatR;
+
 namespace Architecture.Web;
 
 [ApiController]

@@ -2,7 +2,7 @@ using static System.Net.HttpStatusCode;
 
 namespace Architecture.Application;
 
-public sealed record DeleteUserHandler : IHandler<DeleteUserRequest>
+public sealed record DeleteUserHandler : IRequestHandler<DeleteUserRequest , Result>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAuthRepository _authRepository;
@@ -20,7 +20,7 @@ public sealed record DeleteUserHandler : IHandler<DeleteUserRequest>
         _userRepository = userRepository;
     }
 
-    public async Task<Result> HandleAsync(DeleteUserRequest request)
+    public async Task<Result> Handle(DeleteUserRequest request , CancellationToken cancellationToken)
     {
         await _authRepository.DeleteByUserIdAsync(request.Id);
 

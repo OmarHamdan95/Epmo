@@ -2,13 +2,13 @@ using static System.Net.HttpStatusCode;
 
 namespace Architecture.Application;
 
-public sealed record GetUserHandler : IHandler<GetUserRequest, UserModel>
+public sealed record GetUserHandler : IRequestHandler<GetUserRequest, Result<UserModel>>
 {
     private readonly IUserRepository _userRepository;
 
     public GetUserHandler(IUserRepository userRepository) => _userRepository = userRepository;
 
-    public async Task<Result<UserModel>> HandleAsync(GetUserRequest request)
+    public async Task<Result<UserModel>> Handle(GetUserRequest request , CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetModelAsync(request.Id);
 

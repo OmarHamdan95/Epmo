@@ -6,8 +6,8 @@ public sealed class FileController : BaseController
 {
     [DisableRequestSizeLimit]
     [HttpPost]
-    public IActionResult Add() => Mediator.HandleAsync<AddFileRequest, IEnumerable<BinaryFile>>(new AddFileRequest(Request.Files())).ApiResult();
+    public IActionResult Add() => Mediator.Send(new AddFileRequest(Request.Files())).ApiResult();
 
     [HttpGet("{id}")]
-    public IActionResult Get(Guid id) => Mediator.HandleAsync<GetFileRequest, BinaryFile>(new GetFileRequest(id)).ApiResult();
+    public IActionResult Get(Guid id) => Mediator.Send(new GetFileRequest(id)).ApiResult();
 }

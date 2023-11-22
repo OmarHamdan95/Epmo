@@ -3,13 +3,13 @@ using static System.Net.HttpStatusCode;
 
 namespace Architecture.Application;
 
-public sealed record GetLookupHandler : IHandler<GetLookupRequest, LookupModel>
+public sealed record GetLookupHandler : IRequestHandler<GetLookupRequest, Result<LookupModel>>
 {
     private readonly ILookupRepository _lookupRepository;
 
     public GetLookupHandler(ILookupRepository lookupRepository) => _lookupRepository = lookupRepository;
 
-    public async Task<Result<LookupModel>> HandleAsync(GetLookupRequest request)
+    public async Task<Result<LookupModel>> Handle(GetLookupRequest request , CancellationToken cancellationToken)
     {
         var lookup = await _lookupRepository.GetModelAsync(request.Id);
 

@@ -1,4 +1,4 @@
-﻿namespace Architecture.Application.Lookup.Add;
+﻿namespace Architecture.Application;
 
 public sealed class AddLookupRequestValidator :  AbstractValidator<AddLookupRequest>
 {

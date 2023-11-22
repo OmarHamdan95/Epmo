@@ -4,6 +4,7 @@
         <SpaProxyServerUrl>http://localhost:4200</SpaProxyServerUrl>
         <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
         <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="DotNetCore.AspNetCore" />
@@ -28,7 +29,6 @@
         <Using Include="DotNetCore.Extensions" />
         <Using Include="DotNetCore.IoC" />
         <Using Include="DotNetCore.Logging" />
-        <Using Include="DotNetCore.Mediator" />
         <Using Include="DotNetCore.Objects" />
         <Using Include="DotNetCore.Results" />
         <Using Include="DotNetCore.Security" />

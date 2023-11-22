@@ -5,28 +5,28 @@ namespace Architecture.Web;
 public sealed class UserController : BaseController
 {
     [HttpPost]
-    public IActionResult Add(AddUserRequest request) => Mediator.HandleAsync<AddUserRequest, long>(request).ApiResult();
+    public IActionResult Add(AddUserRequest request) => Mediator.Send(request).ApiResult();
 
     [HttpDelete("{id}")]
-    public IActionResult Delete(long id) => Mediator.HandleAsync(new DeleteUserRequest(id)).ApiResult();
+    public IActionResult Delete(long id) => Mediator.Send(new DeleteUserRequest(id)).ApiResult();
 
     [HttpGet("{id}")]
-    public IActionResult Get(long id) => Mediator.HandleAsync<GetUserRequest, UserModel>(new GetUserRequest(id)).ApiResult();
+    public IActionResult Get(long id) => Mediator.Send(new GetUserRequest(id)).ApiResult();
 
     [HttpGet("grid")]
-    public IActionResult Grid([FromQuery] GridUserRequest request) => Mediator.HandleAsync<GridUserRequest, Grid<UserModel>>(request).ApiResult();
+    public IActionResult Grid([FromQuery] GridUserRequest request) => Mediator.Send(request).ApiResult();
 
     [HttpPatch("{id}/inactivate")]
-    public IActionResult Inactivate(long id) => Mediator.HandleAsync(new InactivateUserRequest(id)).ApiResult();
+    public IActionResult Inactivate(long id) => Mediator.Send(new InactivateUserRequest(id)).ApiResult();
 
     [HttpGet]
-    public IActionResult List() => Mediator.HandleAsync<ListUserRequest, IEnumerable<UserModel>>(new ListUserRequest()).ApiResult();
+    public IActionResult List() => Mediator.Send(new ListUserRequest()).ApiResult();
 
     [HttpPut("{id}")]
     public IActionResult Update(long id, UpdateUserRequest request)
     {
         request.Id = id;
 
-        return Mediator.HandleAsync(request).ApiResult();
+        return Mediator.Send(request).ApiResult();
     }
 }

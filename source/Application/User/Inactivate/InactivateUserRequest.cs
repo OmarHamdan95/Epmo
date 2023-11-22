@@ -1,3 +1,3 @@
 namespace Architecture.Application;
 
-public sealed record InactivateUserRequest(long Id);
+public sealed record InactivateUserRequest(long Id) : IRequest<Result>;
