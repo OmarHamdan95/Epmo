@@ -1,8 +1,6 @@
-using Architecture.Model.Lookup;
-using Architecture.Model.SystemMenu;
 using Mapster;
 
-namespace Architecture.Database;
+namespace Epmo.Database;
 
 public sealed class SystemMenuRepository : EFRepository<SystemMenu>, ISystemMenuRepository
 {

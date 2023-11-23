@@ -1,4 +1,6 @@
-﻿namespace Architecture.Domain;
+﻿using Epmo.Domain.Common;
+
+namespace Epmo.Domain;
 
 public class SystemMenu : BaseAuditableEntity
 {

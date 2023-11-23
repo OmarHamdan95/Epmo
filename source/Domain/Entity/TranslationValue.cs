@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using Epmo.Domain.Common;
 
-namespace Architecture.Domain;
+namespace Epmo.Domain;
 
 public class TranslationValue : BaseAuditableEntity
 {

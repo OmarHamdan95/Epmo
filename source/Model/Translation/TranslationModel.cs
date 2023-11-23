@@ -1,4 +1,4 @@
-﻿namespace Architecture.Model.Translation;
+﻿namespace Epmo.Model;
 
 public sealed record TranslationModel
 {

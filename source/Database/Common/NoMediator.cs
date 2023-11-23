@@ -1,7 +1,7 @@
 
 using MediatR;
 
-namespace Architecture.Database.Common;
+namespace Epmo.Database.Common;
 
 public class NoMediator : IMediator
 {

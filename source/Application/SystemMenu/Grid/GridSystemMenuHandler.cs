@@ -1,8 +1,6 @@
-using Architecture.Model.Lookup;
-using Architecture.Model.SystemMenu;
 using static System.Net.HttpStatusCode;
 
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record GridSystemMenuHandler : IRequestHandler<GridSystemMenuRequest, Result<Grid<SystemMenuModel>>>
 {

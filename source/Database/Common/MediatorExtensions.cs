@@ -1,8 +1,8 @@
-using Architecture.Domain.Common;
+using Epmo.Domain.Common;
 using MediatR;
 
 
-namespace Architecture.Database.Common;
+namespace Epmo.Database.Common;
 
 public static class MediatorExtensions
 {

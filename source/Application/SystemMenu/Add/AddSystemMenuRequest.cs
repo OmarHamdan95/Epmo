@@ -1,7 +1,4 @@
-﻿using Architecture.Model.SystemMenu;
-using Architecture.Model.Translation;
-
-namespace Architecture.Application;
+﻿namespace Epmo.Application;
 
 public sealed record AddSystemMenuRequest(TranslationModel? Name,
     string? Icon,

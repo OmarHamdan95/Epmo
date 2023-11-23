@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text;
 using Humanizer;
 
-namespace Architecture.Database.Common;
+namespace Epmo.Database.Common;
 
 public static class Extensions
 {

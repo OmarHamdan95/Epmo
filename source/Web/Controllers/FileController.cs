@@ -1,4 +1,4 @@
-namespace Architecture.Web;
+namespace Epmo.Web;
 
 [ApiController]
 [Route("api/files")]

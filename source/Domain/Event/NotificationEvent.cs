@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Architecture.Domain.Event;
+namespace Epmo.Domain.Event;
 
 public class NotificationEvent<T> : INotification
 {

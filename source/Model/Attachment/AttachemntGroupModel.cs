@@ -1,4 +1,4 @@
-﻿namespace Architecture.Model;
+﻿namespace Epmo.Model;
 
 public class AttachemntGroupModel
 {

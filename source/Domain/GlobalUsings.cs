@@ -1,3 +1,3 @@
-﻿global using Architecture.Domain.Common;
-global using Architecture.Domain.Event;
-global using Architecture.Domain.MarkarEntity;
+﻿global using Epmo.Domain.Common;
+global using Epmo.Domain.Event;
+global using Epmo.Domain.MarkarEntity;

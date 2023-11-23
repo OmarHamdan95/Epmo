@@ -1,6 +1,5 @@
-﻿using Architecture.Model.Translation;
-
-namespace Architecture.Model.Lookup;
+﻿
+namespace Epmo.Model;
 
 public sealed record LookupModel
 {

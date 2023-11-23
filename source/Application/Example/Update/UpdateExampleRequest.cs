@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record UpdateExampleRequest(string Name) : IRequest<Result>
 {

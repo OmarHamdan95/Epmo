@@ -1,4 +1,4 @@
-namespace Architecture.Domain;
+namespace Epmo.Domain;
 
 public enum Status
 {

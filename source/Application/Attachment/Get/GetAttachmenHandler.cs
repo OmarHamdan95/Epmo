@@ -1,7 +1,6 @@
-using Architecture.Model.Lookup;
 using static System.Net.HttpStatusCode;
 
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record GetAttachmenHandler : IRequestHandler<GetAttachmenRequest, Result<AttachemntGroupModel>>
 {

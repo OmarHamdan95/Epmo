@@ -1,8 +1,6 @@
 using System.Text.Json.Serialization;
-using Architecture.Model.Lookup;
-using Architecture.Model.Translation;
 
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record UpdateTranslationRequest(List<TranslationValueModel>? translationValues) : IRequest<Result>
 {

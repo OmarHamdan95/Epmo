@@ -1,5 +1,3 @@
-using Architecture.Model.SystemMenu;
-
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record GridSystemMenuRequest : GridParameters , IRequest<Result<Grid<SystemMenuModel>>>;

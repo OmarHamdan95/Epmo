@@ -1,6 +1,4 @@
-﻿using Architecture.Model.Lookup;
-using Architecture.Model.Translation;
-namespace Architecture.Application;
+﻿namespace Epmo.Application;
 
 public  sealed record AddLanguageRequest (string? Code , string? LangFlag) : IRequest<Result<long>>;
 

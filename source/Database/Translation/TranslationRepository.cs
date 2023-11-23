@@ -1,7 +1,6 @@
-using Architecture.Model.Translation;
 using Mapster;
 
-namespace Architecture.Database;
+namespace Epmo.Database;
 
 public sealed class TranslationRepository : EFRepository<Translation>, ITranslationRepository
 {

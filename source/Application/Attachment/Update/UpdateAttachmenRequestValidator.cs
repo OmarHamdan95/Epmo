@@ -1,10 +1,9 @@
-namespace Architecture.Application;
+namespace Epmo.Application;
 
-public sealed class UpdateAttachmenRequestValidator : AbstractValidator<UpdateLookupRequest>
+public sealed class UpdateAttachmenRequestValidator : AbstractValidator<UpdateAttachmenRequest>
 {
     public UpdateAttachmenRequestValidator()
     {
         RuleFor(request => request.Id).Id();
-        RuleFor(request => request.LookupValueModels).NotEmpty();
     }
 }

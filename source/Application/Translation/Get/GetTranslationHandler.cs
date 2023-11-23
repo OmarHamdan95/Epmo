@@ -1,7 +1,6 @@
-using Architecture.Model.Translation;
 using static System.Net.HttpStatusCode;
 
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record GetTranslationHandler : IRequestHandler<GetTranslationRequest, Result<TranslationModelQuery>>
 {

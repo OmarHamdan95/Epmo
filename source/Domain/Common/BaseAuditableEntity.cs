@@ -1,6 +1,6 @@
-﻿using Architecture.Domain.MarkarEntity;
+﻿using Epmo.Domain.MarkarEntity;
 
-namespace Architecture.Domain.Common;
+namespace Epmo.Domain.Common;
 
 public abstract class BaseAuditableEntity : BaseEntity , IAuditable , ISoftDeletable
 {

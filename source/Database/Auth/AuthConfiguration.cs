@@ -1,4 +1,4 @@
-namespace Architecture.Database;
+namespace Epmo.Database;
 
 public sealed class AuthConfiguration : IEntityTypeConfiguration<Auth>
 {

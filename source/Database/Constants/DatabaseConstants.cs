@@ -1,7 +1,7 @@
-﻿namespace Architecture.Database.Constants;
+﻿namespace Epmo.Database.Constants;
 
 public class DatabaseConstants
 {
-    public const string DB_SCHEMA_NAME = "Architecture";
+    public const string DB_SCHEMA_NAME = "EPMO";
 
 }

@@ -14,12 +14,12 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Domain\Architecture.Domain.csproj" />
-        <ProjectReference Include="..\Model\Architecture.Model.csproj" />
+        <ProjectReference Include="..\Domain\Epmo.Domain.csproj" />
+        <ProjectReference Include="..\Model\Epmo.Model.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <Using Include="Architecture.Domain" />
-        <Using Include="Architecture.Model" />
+        <Using Include="Epmo.Domain" />
+        <Using Include="Epmo.Model" />
         <Using Include="DotNetCore.EntityFrameworkCore" />
         <Using Include="DotNetCore.Objects" />
         <Using Include="DotNetCore.Repositories" />

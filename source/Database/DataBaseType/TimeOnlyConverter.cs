@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Architecture.Database.DataBaseType;
+namespace Epmo.Database.DataBaseType;
 
 public class TimeOnlyConverter : ValueConverter<TimeOnly, TimeSpan>
 {

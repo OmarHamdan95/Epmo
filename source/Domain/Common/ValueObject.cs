@@ -1,4 +1,4 @@
-﻿namespace Architecture.Domain.Common;
+﻿namespace Epmo.Domain.Common;
 
 public abstract class ValueObject
 {

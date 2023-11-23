@@ -1,6 +1,4 @@
-﻿using Architecture.Model.Translation;
-
-namespace Architecture.Model.SystemMenu;
+﻿namespace Epmo.Model;
 
 public class SystemMenuModel
 {

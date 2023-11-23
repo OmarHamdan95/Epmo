@@ -1,6 +1,3 @@
-using Architecture.Model.Lookup;
-using Architecture.Model.Translation;
-
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record ListTranslationRequest : IRequest<Result<IEnumerable<TranslationModelQuery>>>;

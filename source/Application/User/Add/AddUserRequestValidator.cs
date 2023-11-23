@@ -1,4 +1,4 @@
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed class AddUserRequestValidator : AbstractValidator<AddUserRequest>
 {

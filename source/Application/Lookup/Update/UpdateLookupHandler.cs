@@ -1,7 +1,7 @@
 using Mapster;
 using static System.Net.HttpStatusCode;
 
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record UpdateLookupHandler : IRequestHandler<UpdateLookupRequest, Result>
 {

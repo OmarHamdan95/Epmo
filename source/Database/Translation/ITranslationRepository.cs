@@ -1,7 +1,4 @@
-
-using Architecture.Model.Translation;
-
-namespace Architecture.Database;
+namespace Epmo.Database;
 
 public interface ITranslationRepository : IRepository<Translation>
 {

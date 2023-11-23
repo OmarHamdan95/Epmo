@@ -1,4 +1,4 @@
-﻿namespace Architecture.Model.Attachment;
+﻿namespace Epmo.Model;
 
 public class AttachmentModel
 {

@@ -1,6 +1,3 @@
-
-using Architecture.Model.SystemMenu;
-
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record GetSystemMenuRequest(long Id) : IRequest<Result<SystemMenuModel>>;

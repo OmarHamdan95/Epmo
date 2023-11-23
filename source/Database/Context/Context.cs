@@ -1,11 +1,11 @@
 using System.Reflection;
-using Architecture.Database.Common;
-using Architecture.Database.Constants;
-using Architecture.Domain.Common;
+using Epmo.Database.Common;
+using Epmo.Database.Constants;
+using Epmo.Domain.Common;
 using MediatR;
 
 
-namespace Architecture.Database;
+namespace Epmo.Database;
 
 public sealed class Context : DbContext
 {
@@ -22,7 +22,7 @@ public sealed class Context : DbContext
         base.OnModelCreating(builder);
 
         var domainTypes = Assembly
-            .GetAssembly(typeof(Domain._IAssemblyMark))
+            .GetAssembly(typeof(Epmo.Domain._IAssemblyMark))
             .GetTypes()
             .Where(
                 myType =>
@@ -40,7 +40,7 @@ public sealed class Context : DbContext
             }
         }
 
-        builder.ApplyConfigurationsFromAssembly(typeof(Architecture.Database._IAssemblyMark).Assembly);
+        builder.ApplyConfigurationsFromAssembly(typeof(_IAssemblyMark).Assembly);
 
         builder.ApplyConfigurationsFromAssembly(typeof(Context).Assembly).Seed();
     }

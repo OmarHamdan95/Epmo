@@ -1,7 +1,4 @@
-using Architecture.Model.Lookup;
-using Architecture.Model.SystemMenu;
-
-namespace Architecture.Database;
+namespace Epmo.Database;
 
 public interface ISystemMenuRepository : IRepository<SystemMenu>
 {

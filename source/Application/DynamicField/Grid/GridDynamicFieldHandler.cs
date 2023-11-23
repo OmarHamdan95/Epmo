@@ -1,6 +1,6 @@
 using static System.Net.HttpStatusCode;
 
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record GridDynamicFieldHandler : IRequestHandler<GridDynamicFieldRequest, Result<Grid<DynamicFieldModel>>>
 {

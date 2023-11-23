@@ -1,6 +1,6 @@
 using Mapster;
 
-namespace Architecture.Web;
+namespace Epmo.Web;
 
 public static class Extensions
 {

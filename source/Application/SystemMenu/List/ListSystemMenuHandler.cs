@@ -1,8 +1,6 @@
-using Architecture.Model.Lookup;
-using Architecture.Model.SystemMenu;
 using static System.Net.HttpStatusCode;
 
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record ListSystemMenuHandler : IRequestHandler<ListSystemMenuRequest, Result<IEnumerable<SystemMenuModel>>>
 {

@@ -1,6 +1,6 @@
 
 
-namespace Architecture.Database;
+namespace Epmo.Database;
 
 public interface IAttachmentRepository : IRepository<AttachmentGroup>
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Architecture.Database.DataBaseType;
+namespace Epmo.Database.DataBaseType;
 
 public class DateUtcConverter : ValueConverter<DateTime, DateTime>
 {

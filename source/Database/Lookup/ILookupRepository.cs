@@ -1,6 +1,4 @@
-using Architecture.Model.Lookup;
-
-namespace Architecture.Database;
+namespace Epmo.Database;
 
 public interface ILookupRepository : IRepository<Lookup>
 {

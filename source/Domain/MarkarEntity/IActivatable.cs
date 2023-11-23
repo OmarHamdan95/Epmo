@@ -1,4 +1,4 @@
-﻿namespace Architecture.Domain.MarkarEntity;
+﻿namespace Epmo.Domain.MarkarEntity;
 
 public interface IActivatable
 {

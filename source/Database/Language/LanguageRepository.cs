@@ -1,6 +1,6 @@
 using Mapster;
 
-namespace Architecture.Database;
+namespace Epmo.Database;
 
 public sealed class LanguageRepository : EFRepository<Language>, ILanguageRepository
 {

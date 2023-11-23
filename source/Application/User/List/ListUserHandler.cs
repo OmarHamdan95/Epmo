@@ -1,6 +1,6 @@
 using static System.Net.HttpStatusCode;
 
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record ListUserHandler : IRequestHandler<ListUserRequest, Result<IEnumerable<UserModel>>>
 {

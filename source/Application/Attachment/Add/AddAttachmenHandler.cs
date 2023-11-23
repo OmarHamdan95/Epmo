@@ -1,6 +1,4 @@
-﻿using Mapster;
-
-namespace Architecture.Application;
+﻿namespace Epmo.Application;
 using static System.Net.HttpStatusCode;
 
 public sealed record AddAttachmenHandler : IRequestHandler<AddAttachmenRequest, Result<long>>

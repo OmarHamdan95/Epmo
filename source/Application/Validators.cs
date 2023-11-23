@@ -1,4 +1,4 @@
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public static class Validators
 {

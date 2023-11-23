@@ -1,6 +1,6 @@
-﻿using Architecture.Domain.Common;
+﻿using Epmo.Domain.Common;
 
-namespace Architecture.Domain.Event;
+namespace Epmo.Domain.Event;
 
 public class LookupCreatedEvent : BaseEvent
 {

@@ -1,7 +1,4 @@
-﻿using Architecture.Model.Lookup;
-using Architecture.Model.Translation;
-
-namespace Architecture.Model;
+﻿namespace Epmo.Model;
 
 public sealed record DynamicFieldModel
 {

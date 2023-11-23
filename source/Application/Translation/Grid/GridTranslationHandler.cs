@@ -1,8 +1,6 @@
-using Architecture.Model.Lookup;
-using Architecture.Model.Translation;
 using static System.Net.HttpStatusCode;
 
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record GridTranslationHandler : IRequestHandler<GridTranslationRequest, Result<Grid<TranslationModelQuery>>>
 {

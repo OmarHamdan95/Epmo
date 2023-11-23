@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
-using Architecture.Database.DataBaseType;
-using Architecture.Domain.Common;
-using Architecture.Domain.MarkarEntity;
+using Epmo.Database.DataBaseType;
+using Epmo.Domain.Common;
+using Epmo.Domain.MarkarEntity;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Architecture.Database.Common;
+namespace Epmo.Database.Common;
 
 public static class ModelBuilderExtensions
 {

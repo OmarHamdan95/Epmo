@@ -1,6 +1,3 @@
-using Architecture.Model.Lookup;
-using Architecture.Model.SystemMenu;
-
-namespace Architecture.Application;
+namespace Epmo.Application;
 
 public sealed record ListSystemMenuRequest : IRequest<Result<IEnumerable<SystemMenuModel>>>;

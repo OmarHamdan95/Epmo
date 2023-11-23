@@ -1,7 +1,6 @@
-﻿using Architecture.Application;
-using Architecture.Model.Lookup;
+﻿using Epmo.Application;
 
-namespace Architecture.Web;
+namespace Epmo.Web;
 
 [ApiController]
 [Route("api/language")]

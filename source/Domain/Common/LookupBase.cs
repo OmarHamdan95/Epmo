@@ -1,10 +1,9 @@
-﻿using Architecture.Domain.MarkarEntity;
+﻿using Epmo.Domain.MarkarEntity;
 
-namespace Architecture.Domain.Common;
+namespace Epmo.Domain.Common;
 
 public abstract class LookupBase: BaseAuditableEntity ,IAuditable, ISoftDeletable
 {
-    public string? Value { get; set; }
     public virtual DateTime? ValidFrom { get; set; }
     public virtual DateTime? ValidTo { get; set; }
 

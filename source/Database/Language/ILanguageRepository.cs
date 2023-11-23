@@ -1,5 +1,5 @@
 
-namespace Architecture.Database;
+namespace Epmo.Database;
 
 public interface ILanguageRepository : IRepository<Language>
 {

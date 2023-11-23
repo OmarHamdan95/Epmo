@@ -8,12 +8,12 @@
         <PackageReference Include="Microsoft.Extensions.Localization" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Database\Architecture.Database.csproj" />
+        <ProjectReference Include="..\Database\Epmo.Database.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <Using Include="Architecture.Database" />
-        <Using Include="Architecture.Domain" />
-        <Using Include="Architecture.Model" />
+        <Using Include="Epmo.Database" />
+        <Using Include="Epmo.Domain" />
+        <Using Include="Epmo.Model" />
         <Using Include="DotNetCore.EntityFrameworkCore" />
         <Using Include="DotNetCore.Extensions" />
         <Using Include="DotNetCore.Objects" />

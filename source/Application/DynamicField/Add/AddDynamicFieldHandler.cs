@@ -1,5 +1,5 @@
 ﻿using Mapster;
-namespace Architecture.Application;
+namespace Epmo.Application;
 using static System.Net.HttpStatusCode;
 
 public sealed record AddDynamicFieldHandler : IRequestHandler<AddDynamicFieldRequest, Result<long>>

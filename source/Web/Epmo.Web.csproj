@@ -17,13 +17,13 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Application\Architecture.Application.csproj" />
+        <ProjectReference Include="..\Application\Epmo.Application.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <Using Include="Architecture.Application" />
-        <Using Include="Architecture.Database" />
-        <Using Include="Architecture.Model" />
-        <Using Include="Architecture.Web" />
+        <Using Include="Epmo.Application" />
+        <Using Include="Epmo.Database" />
+        <Using Include="Epmo.Model" />
+        <Using Include="Epmo.Web" />
         <Using Include="DotNetCore.AspNetCore" />
         <Using Include="DotNetCore.EntityFrameworkCore" />
         <Using Include="DotNetCore.Extensions" />

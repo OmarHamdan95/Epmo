@@ -3,7 +3,7 @@
 
 using MediatR;
 
-namespace Architecture.Web;
+namespace Epmo.Web;
 
 [ApiController]
 public abstract class BaseController : ControllerBase
