@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Web/bin/Debug/net8.0/Architecture.Web.dll",
+            "program": "${workspaceFolder}/Web/bin/Debug/net8.0/Epmo.Web.dll",
             "cwd": "${workspaceFolder}/Web",
             "stopAtEntry": false,
             "serverReadyAction": {
