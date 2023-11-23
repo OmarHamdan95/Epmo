@@ -1,6 +1,4 @@
-# ARCHITECTURE
-
-![](https://github.com/rafaelfgx/Architecture/actions/workflows/build.yaml/badge.svg)
+# EPMO
 
 This project is an example of architecture using new technologies and best practices.
 
@@ -93,8 +91,8 @@ The goal is to learn and share knowledge and use it as reference for new project
 #### Steps
 
 1. Open directory **source\Web\Frontend** in command line and execute **npm i**.
-2. Open **source\Architecture.sln** in Visual Studio.
-3. Set **Architecture.Web** as startup project.
+2. Open **source\Epmo.sln** in Visual Studio.
+3. Set **Epmo.Web** as startup project.
 4. Press **F5**.
 
 </details>
