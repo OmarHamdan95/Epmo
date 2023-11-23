@@ -7,8 +7,6 @@ public sealed record AddAttachmenHandler : IRequestHandler<AddAttachmenRequest, 
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAttachmentRepository _attachmentRepository;
-
-
     public AddAttachmenHandler
     (
         IUnitOfWork unitOfWork,

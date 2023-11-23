@@ -3,12 +3,15 @@
 public class DynamicField : BaseAuditableEntity
 {
     public Translation? Name { get; set; }
-    public LookupValue? EntityType { get; set; }
-    public LookupValue? DynamicFieldType { get; set; }
+    private LookupValue? EntityType { get; set; }
+    public long? EntityTypeId { get; set; }
+    private LookupValue? DynamicFieldType { get; set; }
+    public long? DynamicFieldTypeId { get; set; }
     public string? DynamicFieldRegex { get; set; }
     public long? DynamicFieldMinValue { get; set; }
     public long? DynamicFieldMaxValue { get; set; }
-    public LookupValue? DynamicFieldLookupType { get; set; }
+    private LookupValue? DynamicFieldLookupType { get; set; }
+    public long? DynamicFieldLookupTypeId { get; set; }
 
 
     public DynamicField()
@@ -22,12 +25,12 @@ public class DynamicField : BaseAuditableEntity
         LookupValue? dynamicFieldLookupType)
     {
         Name = name;
-        EntityType = entityType;
-        DynamicFieldType = dynamicFieldType;
+        EntityTypeId = entityType?.Id ?? null;
+        DynamicFieldTypeId = dynamicFieldType?.Id ?? null;
         DynamicFieldRegex = dynamicFieldRegex;
         DynamicFieldMinValue = dynamicFieldMinValue;
         DynamicFieldMaxValue = dynamicFieldMaxValue;
-        DynamicFieldLookupType = dynamicFieldLookupType;
+        DynamicFieldLookupTypeId = dynamicFieldLookupType?.Id ?? null;
     }
 
 
@@ -36,11 +39,11 @@ public class DynamicField : BaseAuditableEntity
         LookupValue? dynamicFieldLookupType)
     {
         Name = name;
-        EntityType = entityType;
-        DynamicFieldType = dynamicFieldType;
+        EntityTypeId = entityType?.Id ?? null;
+        DynamicFieldTypeId = dynamicFieldType?.Id ?? null;
         DynamicFieldRegex = dynamicFieldRegex;
         DynamicFieldMinValue = dynamicFieldMinValue;
         DynamicFieldMaxValue = dynamicFieldMaxValue;
-        DynamicFieldLookupType = dynamicFieldLookupType;
+        DynamicFieldLookupTypeId = dynamicFieldLookupType?.Id ?? null;
     }
 }
