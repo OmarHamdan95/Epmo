@@ -1,8 +1,8 @@
 version: "3.8"
 services:
     web:
-        image: architecture/web
-        container_name: architecture_web
+        image: epmo/web
+        container_name: epmo_web
         restart: always
         build:
             context: ..
@@ -12,7 +12,7 @@ services:
             - Authentication__Schemes__Bearer__SigningKeys__1__Value=E7F87FB927DB404E9F027E0826AFF62B
             - Authentication__Schemes__Bearer__ValidAudience=Audience
             - Authentication__Schemes__Bearer__ValidIssuer=Issuer
-            - ConnectionStrings__Context=Server=architecture_database;Database=Database;User Id=sa;Password=P4ssW0rd!;TrustServerCertificate=true;
+            - ConnectionStrings__Context=Server=Epmo_database;Database=Epmo;User Id=sa;Password=P@ssW0rd!;TrustServerCertificate=true;
             - Serilog__WriteTo__1__Args__path=/app/logs/
         depends_on:
             - database
@@ -22,11 +22,11 @@ services:
             - 8090:80
     database:
         image: mcr.microsoft.com/mssql/server
-        container_name: architecture_database
+        container_name: Epmo_database
         restart: always
         environment:
             - ACCEPT_EULA=Y
-            - SA_PASSWORD=P4ssW0rd!
+            - SA_PASSWORD=P@ssW0rd!
         networks:
             - network
         ports:
