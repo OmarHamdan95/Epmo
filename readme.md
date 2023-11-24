@@ -19,6 +19,7 @@ The goal is to learn and share knowledge and use it as reference for new project
 * Result Pattern
 * Folder-by-Feature Structure
 * Separation of Concerns
+* CQRS
 
 ## BENEFITS
 
