@@ -3,7 +3,7 @@
   <component name="EfCoreDialogsState">
     <option name="keyValueStorage">
       <map>
-        <entry key="Common:10fb2153-d624-4971-a25d-a7ecc5d84dcd:dbContext" value="Architecture.Database.Context" />
+        <entry key="Common:10fb2153-d624-4971-a25d-a7ecc5d84dcd:dbContext" value="Epmo.Database.Context" />
         <entry key="Common:buildConfiguration" value="Debug" />
         <entry key="Common:fee1a75a-095e-44f6-b4a5-ca066f0338d6:dbContext" value="Architecture.Database.Context" />
         <entry key="Common:noBuild" value="false" />
