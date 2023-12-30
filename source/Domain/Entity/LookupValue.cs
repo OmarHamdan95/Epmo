@@ -1,6 +1,4 @@
-﻿using Epmo.Domain.Common;
-
-namespace Epmo.Domain;
+﻿namespace Epmo.Domain;
 
 public class LookupValue :  LookupBase
 {

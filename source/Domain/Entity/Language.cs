@@ -1,5 +1,3 @@
-using Epmo.Domain.Common;
-
 namespace Epmo.Domain;
 
 public class Language : LookupBase

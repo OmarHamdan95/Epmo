@@ -1,5 +1,3 @@
-using Epmo.Domain.Common;
-
 namespace Epmo.Domain;
 
 public sealed class User : BaseAuditableEntity

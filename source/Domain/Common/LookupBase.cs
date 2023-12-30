@@ -1,6 +1,4 @@
-﻿using Epmo.Domain.MarkarEntity;
-
-namespace Epmo.Domain.Common;
+﻿namespace Epmo.Domain.Common;
 
 public abstract class LookupBase: BaseAuditableEntity ,IAuditable, ISoftDeletable
 {
