@@ -4,7 +4,7 @@ public sealed class AddLookupRequestValidator :  AbstractValidator<AddLookupRequ
 {
     public AddLookupRequestValidator()
     {
-        RuleFor(request => request.LookupCode).Name();
+        RuleFor(request => request.Code).Name();
         RuleFor(request => request.TranslationModel).NotEmpty();
     }
 }
