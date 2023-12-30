@@ -4,13 +4,13 @@ namespace Epmo.Application;
 
 public sealed record GridLookupHandler : IRequestHandler<GridLookupRequest, Result<Grid<LookupModel>>>
 {
-    private readonly ILookupRepository _lookupRepository;
+    private readonly IRepositoryBase<Lookup> _lookupRepository;
 
-    public GridLookupHandler(ILookupRepository lookupRepository) => _lookupRepository = lookupRepository;
+    public GridLookupHandler(IRepositoryBase<Lookup> lookupRepository) => _lookupRepository = lookupRepository;
 
     public async Task<Result<Grid<LookupModel>>> Handle(GridLookupRequest request , CancellationToken cancellationToken)
     {
-        var grid = await _lookupRepository.GridAsync(request);
+        var grid = await _lookupRepository.GridAsync<LookupModel>(request);
 
         return new Result<Grid<LookupModel>>(grid is null ? NotFound : OK, grid);
     }

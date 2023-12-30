@@ -6,12 +6,12 @@ namespace Epmo.Application;
 public sealed record UpdateTranslationHandler : IRequestHandler<UpdateTranslationRequest, Result>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ITranslationRepository _translationRepository;
+    private readonly IRepositoryBase<Translation> _translationRepository;
 
     public UpdateTranslationHandler
     (
         IUnitOfWork unitOfWork,
-        ITranslationRepository translationRepository
+        IRepositoryBase<Translation> translationRepository
     )
     {
         _unitOfWork = unitOfWork;

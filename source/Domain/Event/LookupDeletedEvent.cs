@@ -1,10 +1,11 @@
 ﻿namespace Epmo.Domain.Event;
 
-public class LookupValueCreatedEvent : BaseEvent
+public class LookupDeletedEvent : BaseEvent
 {
-    public LookupValueCreatedEvent(LookupValue item)
+    public LookupDeletedEvent(Lookup item)
     {
         Item = item;
     }
-    public LookupValue Item;
+
+    public Lookup Item { get; }
 }

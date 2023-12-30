@@ -5,12 +5,11 @@ namespace Epmo.Application;
 public sealed record DeleteLanguageHandler : IRequestHandler<DeleteLanguageRequest , Result>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ILanguageRepository _languageRepository;
-
+    private readonly IRepositoryBase<Language> _languageRepository;
     public DeleteLanguageHandler
     (
         IUnitOfWork unitOfWork,
-        ILanguageRepository languageRepository
+        IRepositoryBase<Language> languageRepository
     )
     {
         _unitOfWork = unitOfWork;
@@ -20,7 +19,7 @@ public sealed record DeleteLanguageHandler : IRequestHandler<DeleteLanguageReque
     public async Task<Result> Handle(DeleteLanguageRequest request , CancellationToken cancellationToken)
     {
 
-        await _languageRepository.DeleteAsync(request.Id);
+        await _languageRepository.DeleteEntityAsync(request.Id);
 
         await _unitOfWork.SaveChangesAsync();
 

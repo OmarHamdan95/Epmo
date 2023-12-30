@@ -5,13 +5,12 @@ using static System.Net.HttpStatusCode;
 public sealed record AddSystemMenuHandler : IRequestHandler<AddSystemMenuRequest, Result<long>>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ISystemMenuRepository _systemMenuRepository;
-
+    private readonly IRepositoryBase<SystemMenu> _systemMenuRepository;
 
     public AddSystemMenuHandler
     (
         IUnitOfWork unitOfWork,
-        ISystemMenuRepository languageRepository
+        IRepositoryBase<SystemMenu> languageRepository
     )
     {
         _unitOfWork = unitOfWork;
@@ -29,6 +28,6 @@ public sealed record AddSystemMenuHandler : IRequestHandler<AddSystemMenuRequest
         await _unitOfWork.SaveChangesAsync();
 
         return new Result<long>(Created, systemMenu.Id);
-       // throw new NotImplementedException();
+        // throw new NotImplementedException();
     }
 }

@@ -5,12 +5,12 @@ namespace Epmo.Application;
 public sealed record DeleteLookupHandler : IRequestHandler<DeleteLookupRequest , Result>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ILookupRepository _lookupRepository;
+    private readonly IRepositoryBase<Lookup> _lookupRepository;
 
     public DeleteLookupHandler
     (
         IUnitOfWork unitOfWork,
-        ILookupRepository lookupRepository
+        IRepositoryBase<Lookup> lookupRepository
     )
     {
         _unitOfWork = unitOfWork;
@@ -20,7 +20,7 @@ public sealed record DeleteLookupHandler : IRequestHandler<DeleteLookupRequest ,
     public async Task<Result> Handle(DeleteLookupRequest request , CancellationToken cancellationToken)
     {
 
-        await _lookupRepository.DeleteAsync(request.Id);
+        await _lookupRepository.DeleteEntityAsync(request.Id);
 
         await _unitOfWork.SaveChangesAsync();
 

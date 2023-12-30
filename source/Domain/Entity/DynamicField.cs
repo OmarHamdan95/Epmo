@@ -1,6 +1,6 @@
 ﻿namespace Epmo.Domain;
 
-public class DynamicField : BaseAuditableEntity
+public class DynamicField : BaseAuditableEntity , IAggregateRoot
 {
     public Translation? Name { get; set; }
     private LookupValue? EntityType { get; set; }

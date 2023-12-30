@@ -5,12 +5,12 @@ namespace Epmo.Application;
 public sealed record DeleteSystemMenuHandler : IRequestHandler<DeleteSystemMenuRequest , Result>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ISystemMenuRepository _systemMenuRepository;
+    private readonly IRepositoryBase<SystemMenu> _systemMenuRepository;
 
     public DeleteSystemMenuHandler
     (
         IUnitOfWork unitOfWork,
-        ISystemMenuRepository systemMenuRepository
+        IRepositoryBase<SystemMenu> systemMenuRepository
     )
     {
         _unitOfWork = unitOfWork;
@@ -20,7 +20,7 @@ public sealed record DeleteSystemMenuHandler : IRequestHandler<DeleteSystemMenuR
     public async Task<Result> Handle(DeleteSystemMenuRequest request , CancellationToken cancellationToken)
     {
 
-        await _systemMenuRepository.DeleteAsync(request.Id);
+        await _systemMenuRepository.DeleteEntityAsync(request.Id);
 
         await _unitOfWork.SaveChangesAsync();
 

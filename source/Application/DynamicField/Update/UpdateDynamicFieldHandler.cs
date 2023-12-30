@@ -6,12 +6,12 @@ namespace Epmo.Application;
 public sealed record UpdateDynamicFieldHandler : IRequestHandler<UpdateDynamicFieldRequest, Result>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IDynamicFieldRepository _dynamicFieldRepository;
+    private readonly IRepositoryBase<DynamicField> _dynamicFieldRepository;
 
     public UpdateDynamicFieldHandler
     (
         IUnitOfWork unitOfWork,
-        IDynamicFieldRepository dynamicFieldRepository
+        IRepositoryBase<DynamicField> dynamicFieldRepository
     )
     {
         _unitOfWork = unitOfWork;

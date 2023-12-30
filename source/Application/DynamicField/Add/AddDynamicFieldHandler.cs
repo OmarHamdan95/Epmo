@@ -5,13 +5,11 @@ using static System.Net.HttpStatusCode;
 public sealed record AddDynamicFieldHandler : IRequestHandler<AddDynamicFieldRequest, Result<long>>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IDynamicFieldRepository _dynamicFieldRepository;
-
-
+    private readonly IRepositoryBase<DynamicField> _dynamicFieldRepository;
     public AddDynamicFieldHandler
     (
         IUnitOfWork unitOfWork,
-        IDynamicFieldRepository dynamicFieldRepository
+        IRepositoryBase<DynamicField> dynamicFieldRepository
     )
     {
         _unitOfWork = unitOfWork;
@@ -30,6 +28,6 @@ public sealed record AddDynamicFieldHandler : IRequestHandler<AddDynamicFieldReq
         await _unitOfWork.SaveChangesAsync();
 
         return new Result<long>(Created, dynamicField.Id);
-       // throw new NotImplementedException();
+        // throw new NotImplementedException();
     }
 }

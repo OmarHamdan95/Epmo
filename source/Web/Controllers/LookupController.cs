@@ -12,6 +12,9 @@ public sealed class LookupController : BaseController
     [HttpGet("{id}")]
     public IActionResult Get(long id) => Mediator.Send(new GetLookupRequest(id)).ApiResult();
 
+    [HttpGet("autoComplate/{lookupCode}")]
+    public IActionResult autoComplate(string? lookupCode , string? text) => Mediator.Send(new AutoCompleteLookupRequest(lookupCode, text)).ApiResult();
+
     [HttpDelete("{id}")]
     public IActionResult Delete(long id) => Mediator.Send(new DeleteLookupRequest(id)).ApiResult();
 

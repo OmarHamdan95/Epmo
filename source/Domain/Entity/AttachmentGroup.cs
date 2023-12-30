@@ -1,6 +1,6 @@
 ﻿namespace Epmo.Domain;
 
-public class AttachmentGroup : BaseAuditableEntity
+public class AttachmentGroup : BaseAuditableEntity , IAggregateRoot
 {
     public bool IsActive { get; set; }
 

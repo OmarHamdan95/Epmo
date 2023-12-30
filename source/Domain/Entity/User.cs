@@ -1,6 +1,6 @@
 namespace Epmo.Domain;
 
-public sealed class User : BaseAuditableEntity
+public sealed class User : BaseAuditableEntity , IAggregateRoot
 {
     public User
     (

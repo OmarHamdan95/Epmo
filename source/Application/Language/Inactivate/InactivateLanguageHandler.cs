@@ -5,12 +5,12 @@ namespace Epmo.Application;
 public sealed record InactivateLanguageHandler : IRequestHandler<InactivateLanguageRequest , Result>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ILanguageRepository _languageRepository;
+    private readonly IRepositoryBase<Language> _languageRepository;
 
     public InactivateLanguageHandler
     (
         IUnitOfWork unitOfWork,
-        ILanguageRepository languageRepository
+        IRepositoryBase<Language> languageRepository
     )
     {
         _unitOfWork = unitOfWork;

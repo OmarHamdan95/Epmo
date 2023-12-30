@@ -5,13 +5,11 @@ using static System.Net.HttpStatusCode;
 public sealed record AddLanguageHandler : IRequestHandler<AddLanguageRequest, Result<long>>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ILanguageRepository _languageRepository;
-
-
+    private readonly IRepositoryBase<Language> _languageRepository;
     public AddLanguageHandler
     (
         IUnitOfWork unitOfWork,
-        ILanguageRepository languageRepository
+        IRepositoryBase<Language> languageRepository
     )
     {
         _unitOfWork = unitOfWork;
@@ -28,6 +26,6 @@ public sealed record AddLanguageHandler : IRequestHandler<AddLanguageRequest, Re
         await _unitOfWork.SaveChangesAsync();
 
         return new Result<long>(Created, language.Id);
-       // throw new NotImplementedException();
+        // throw new NotImplementedException();
     }
 }

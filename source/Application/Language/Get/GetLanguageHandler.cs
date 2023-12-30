@@ -4,13 +4,13 @@ namespace Epmo.Application;
 
 public sealed record GetLanguageHandler : IRequestHandler<GetLanguageRequest, Result<LanguageModel>>
 {
-    private readonly ILanguageRepository _languageRepository;
+    private readonly IRepositoryBase<Language> _languageRepository;
 
-    public GetLanguageHandler(ILanguageRepository languageRepository) => _languageRepository = languageRepository;
+    public GetLanguageHandler(IRepositoryBase<Language> languageRepository) => _languageRepository = languageRepository;
 
     public async Task<Result<LanguageModel>> Handle(GetLanguageRequest request , CancellationToken cancellationToken)
     {
-        var language = await _languageRepository.GetModelAsync(request.Id);
+        var language = await _languageRepository.GetModelAsync<LanguageModel>(request.Id);
 
         return new Result<LanguageModel>(language is null ? NotFound : OK, language);
     }

@@ -5,12 +5,12 @@ namespace Epmo.Application;
 public sealed record InactivateLookupHandler : IRequestHandler<InactivateLookupRequest , Result>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ILookupRepository _lookupRepository;
+    private readonly IRepositoryBase<Lookup> _lookupRepository;
 
     public InactivateLookupHandler
     (
         IUnitOfWork unitOfWork,
-        ILookupRepository lookupRepository
+        IRepositoryBase<Lookup> lookupRepository
     )
     {
         _unitOfWork = unitOfWork;

@@ -1,4 +1,4 @@
-﻿namespace Epmo.Domain.Common;
+﻿namespace Epmo.Domain;
 
 public abstract class BaseAuditableEntity : BaseEntity , IAuditable , ISoftDeletable
 {

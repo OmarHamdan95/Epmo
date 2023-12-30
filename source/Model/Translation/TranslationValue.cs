@@ -1,5 +1,4 @@
-﻿
-namespace Epmo.Model;
+﻿namespace Epmo.Model;
 
 public sealed record TranslationValueModel
 {

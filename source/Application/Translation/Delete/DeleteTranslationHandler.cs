@@ -5,12 +5,12 @@ namespace Epmo.Application;
 public sealed record DeleteTranslationHandler : IRequestHandler<DeleteTranslationRequest , Result>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ITranslationRepository _translationRepository;
+    private readonly IRepositoryBase<Translation> _translationRepository;
 
     public DeleteTranslationHandler
     (
         IUnitOfWork unitOfWork,
-        ITranslationRepository translationRepository
+        IRepositoryBase<Translation> translationRepository
     )
     {
         _unitOfWork = unitOfWork;
@@ -20,7 +20,7 @@ public sealed record DeleteTranslationHandler : IRequestHandler<DeleteTranslatio
     public async Task<Result> Handle(DeleteTranslationRequest request , CancellationToken cancellationToken)
     {
 
-        await _translationRepository.DeleteAsync(request.Id);
+        await _translationRepository.DeleteEntityAsync(request.Id);
 
         await _unitOfWork.SaveChangesAsync();
 

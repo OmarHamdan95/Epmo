@@ -15,6 +15,7 @@ builder.Services.AddContext<Context>(options => options.UseSqlServer(builder.Con
 builder.Services.AddClassesMatchingInterfaces(nameof(Epmo));
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 builder.Services.AddSwaggerDefault();
+builder.Services.AddProfiler();
 builder.Services.AddControllers().AddJsonOptions().AddAuthorizationPolicy();
 
 
@@ -26,6 +27,7 @@ application.UseLocalization("en", "ar");
 application.UseResponseCompression();
 application.UseStaticFiles();
 application.UseSwagger().UseSwaggerUI();
+application.UseMiniProfiler();
 application.UseRouting();
 application.MapControllers();
 application.MapFallbackToFile("index.html");

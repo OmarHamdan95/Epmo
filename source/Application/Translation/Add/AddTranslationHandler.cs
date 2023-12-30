@@ -5,13 +5,12 @@ using static System.Net.HttpStatusCode;
 public sealed record AddTranslationHandler : IRequestHandler<AddTranslationRequest, Result<long>>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ITranslationRepository _translationRepository;
-
+    private readonly IRepositoryBase<Translation> _translationRepository;
 
     public AddTranslationHandler
     (
         IUnitOfWork unitOfWork,
-        ITranslationRepository translationRepository
+        IRepositoryBase<Translation> translationRepository
     )
     {
         _unitOfWork = unitOfWork;
@@ -28,6 +27,6 @@ public sealed record AddTranslationHandler : IRequestHandler<AddTranslationReque
         await _unitOfWork.SaveChangesAsync();
 
         return new Result<long>(Created, translation.Id);
-       // throw new NotImplementedException();
+        // throw new NotImplementedException();
     }
 }

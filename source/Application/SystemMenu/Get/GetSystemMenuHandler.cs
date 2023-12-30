@@ -4,13 +4,13 @@ namespace Epmo.Application;
 
 public sealed record GetSystemMenuHandler : IRequestHandler<GetSystemMenuRequest, Result<SystemMenuModel>>
 {
-    private readonly ISystemMenuRepository _systemMenuRepository;
+    private readonly IRepositoryBase<SystemMenu> _systemMenuRepository;
 
-    public GetSystemMenuHandler(ISystemMenuRepository systemMenuRepository) => _systemMenuRepository = systemMenuRepository;
+    public GetSystemMenuHandler(IRepositoryBase<SystemMenu> systemMenuRepository) => _systemMenuRepository = systemMenuRepository;
 
     public async Task<Result<SystemMenuModel>> Handle(GetSystemMenuRequest request , CancellationToken cancellationToken)
     {
-        var systemMenu = await _systemMenuRepository.GetModelAsync(request.Id);
+        var systemMenu = await _systemMenuRepository.GetModelAsync<SystemMenuModel>(request.Id);
 
         return new Result<SystemMenuModel>(systemMenu is null ? NotFound : OK, systemMenu);
     }

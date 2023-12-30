@@ -6,12 +6,12 @@ namespace Epmo.Application;
 public sealed record UpdateAttachmenHandler : IRequestHandler<UpdateAttachmenRequest, Result>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IAttachmentRepository _attachmentRepository;
+    private readonly IRepositoryBase<AttachmentGroup> _attachmentRepository;
 
     public UpdateAttachmenHandler
     (
         IUnitOfWork unitOfWork,
-        IAttachmentRepository attachmentRepository
+        IRepositoryBase<AttachmentGroup> attachmentRepository
     )
     {
         _unitOfWork = unitOfWork;

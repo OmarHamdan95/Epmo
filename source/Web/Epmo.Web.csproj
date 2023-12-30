@@ -15,6 +15,8 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="MiniProfiler.AspNetCore.Mvc" />
+        <PackageReference Include="MiniProfiler.EntityFrameworkCore" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Application\Epmo.Application.csproj" />

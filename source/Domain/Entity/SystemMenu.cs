@@ -1,6 +1,6 @@
 ﻿namespace Epmo.Domain;
 
-public class SystemMenu : BaseAuditableEntity
+public class SystemMenu : BaseAuditableEntity , IAggregateRoot
 {
     public Translation? Name { get; set; }
     public string? Icon { get; set; }

@@ -1,4 +1,3 @@
-
 using MediatR;
 
 namespace Epmo.Database.Common;

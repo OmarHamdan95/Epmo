@@ -6,12 +6,12 @@ namespace Epmo.Application;
 public sealed record UpdateLookupHandler : IRequestHandler<UpdateLookupRequest, Result>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ILookupRepository _lookupRepository;
+    private readonly IRepositoryBase<Lookup> _lookupRepository;
 
     public UpdateLookupHandler
     (
         IUnitOfWork unitOfWork,
-        ILookupRepository lookupRepository
+        IRepositoryBase<Lookup> lookupRepository
     )
     {
         _unitOfWork = unitOfWork;
@@ -28,6 +28,8 @@ public sealed record UpdateLookupHandler : IRequestHandler<UpdateLookupRequest, 
             request.dataType,request.parent.Adapt<Lookup>());
 
         await _lookupRepository.UpdateAsync(lookup);
+
+        // Call Audit Service (Old Value , New Value);
 
         await _unitOfWork.SaveChangesAsync();
 
