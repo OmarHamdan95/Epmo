@@ -71,14 +71,14 @@ namespace Epmo.Database.Migrations
                     ID = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LANG_FLAG = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VALID_FROM = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    VALID_TO = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CREATED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IS_DELETED = table.Column<bool>(type: "bit", nullable: false),
-                    CODE = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    VALID_FROM = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    VALID_TO = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    CODE = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -200,7 +200,6 @@ namespace Epmo.Database.Migrations
                     LINKS = table.Column<long>(type: "bigint", nullable: true),
                     IS_SYSTEM = table.Column<bool>(type: "bit", nullable: false),
                     DATA_TYPE = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TRANSLATION_ID = table.Column<long>(type: "bigint", nullable: true),
                     CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CREATED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -208,7 +207,8 @@ namespace Epmo.Database.Migrations
                     IS_DELETED = table.Column<bool>(type: "bit", nullable: false),
                     CODE = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     VALID_FROM = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    VALID_TO = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    VALID_TO = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    TRANSLATION_ID = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -284,6 +284,12 @@ namespace Epmo.Database.Migrations
                 {
                     table.PrimaryKey("PK_TRANSLATION_VALUES", x => x.ID);
                     table.ForeignKey(
+                        name: "FK_TRANSLATION_VALUES_LANGUAGES_LANGUAGE_ID",
+                        column: x => x.LANGUAGE_ID,
+                        principalSchema: "EPMO",
+                        principalTable: "LANGUAGES",
+                        principalColumn: "ID");
+                    table.ForeignKey(
                         name: "FK_TRANSLATION_VALUES_TRANSLATIONS_TRANSLATION_ID",
                         column: x => x.TRANSLATION_ID,
                         principalSchema: "EPMO",
@@ -334,7 +340,6 @@ namespace Epmo.Database.Migrations
                     ORDER = table.Column<long>(type: "bigint", nullable: true),
                     IS_SYSTEM = table.Column<bool>(type: "bit", nullable: false),
                     COLOR = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TRANSLATION_ID = table.Column<long>(type: "bigint", nullable: true),
                     CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CREATED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -342,7 +347,8 @@ namespace Epmo.Database.Migrations
                     IS_DELETED = table.Column<bool>(type: "bit", nullable: false),
                     CODE = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     VALID_FROM = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    VALID_TO = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    VALID_TO = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    TRANSLATION_ID = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -455,6 +461,12 @@ namespace Epmo.Database.Migrations
                 column: "PARENT_ID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TRANSLATION_VALUES_LANGUAGE_ID",
+                schema: "EPMO",
+                table: "TRANSLATION_VALUES",
+                column: "LANGUAGE_ID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TRANSLATION_VALUES_TRANSLATION_ID",
                 schema: "EPMO",
                 table: "TRANSLATION_VALUES",
@@ -488,10 +500,6 @@ namespace Epmo.Database.Migrations
                 schema: "Example");
 
             migrationBuilder.DropTable(
-                name: "LANGUAGES",
-                schema: "EPMO");
-
-            migrationBuilder.DropTable(
                 name: "LOOKUP_VALUES",
                 schema: "EPMO");
 
@@ -513,6 +521,10 @@ namespace Epmo.Database.Migrations
 
             migrationBuilder.DropTable(
                 name: "LOOKUPS",
+                schema: "EPMO");
+
+            migrationBuilder.DropTable(
+                name: "LANGUAGES",
                 schema: "EPMO");
 
             migrationBuilder.DropTable(
