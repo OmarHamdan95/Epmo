@@ -662,6 +662,8 @@ namespace Epmo.Database.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("LanguageId");
+
                     b.HasIndex("TranslationId");
 
                     b.ToTable("TRANSLATION_VALUES", "EPMO");
@@ -816,9 +818,15 @@ namespace Epmo.Database.Migrations
 
             modelBuilder.Entity("Epmo.Domain.TranslationValue", b =>
                 {
+                    b.HasOne("Epmo.Domain.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId");
+
                     b.HasOne("Epmo.Domain.Translation", "Translation")
                         .WithMany("TranslationValues")
                         .HasForeignKey("TranslationId");
+
+                    b.Navigation("Language");
 
                     b.Navigation("Translation");
                 });
