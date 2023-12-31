@@ -11,6 +11,7 @@
       <PackageReference Include="Mapster" />
       <PackageReference Include="MediatR" />
       <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" />
+      <PackageReference Include="morelinq" />
     </ItemGroup>
 
 </Project>
