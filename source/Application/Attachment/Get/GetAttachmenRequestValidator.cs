@@ -1,6 +1,6 @@
 namespace Epmo.Application;
 
-public sealed class GetAttachmenRequestValidator : AbstractValidator<GetLookupRequest>
+public sealed class GetAttachmenRequestValidator : AbstractValidator<GetAttachmenRequest>
 {
     public GetAttachmenRequestValidator() => RuleFor(request => request.Id).Id();
 }
