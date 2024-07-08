@@ -20,7 +20,7 @@ public sealed class Context : DbContext
     {
         //System.Diagnostics.Debugger.Launch();
         base.OnModelCreating(builder);
-
+        //System.Diagnostics.Debugger.Launch();
         var domainTypes = Assembly
             .GetAssembly(typeof(Epmo.Domain._IAssemblyMark))
             .GetTypes()
@@ -36,6 +36,8 @@ public sealed class Context : DbContext
         {
             foreach (var property in entity.GetProperties())
             {
+                //if (entity.Name == nameof(Auth))
+
                 property.SetColumnName(property.Name.ToUpperUnderscoreColumnName());
             }
         }

@@ -4,7 +4,7 @@ public sealed class AuthConfiguration : IEntityTypeConfiguration<Auth>
 {
     public void Configure(EntityTypeBuilder<Auth> builder)
     {
-        builder.ToTable(nameof(Auth), nameof(Auth));
+       // builder.ToTable(nameof(Auth), nameof(Auth));
 
         builder.HasKey(entity => entity.Id);
 
@@ -25,5 +25,6 @@ public sealed class AuthConfiguration : IEntityTypeConfiguration<Auth>
         builder.HasIndex(entity => entity.Salt).IsUnique();
 
         builder.HasIndex("UserId").IsUnique();
+
     }
 }

@@ -1,6 +1,6 @@
 namespace Epmo.Domain;
 
-public sealed class Auth : BaseAuditableEntity
+public class Auth : BaseAuditableEntity
 {
     public Auth
     (
@@ -17,17 +17,20 @@ public sealed class Auth : BaseAuditableEntity
     }
 
     public Auth(long id) => Id = id;
-    public Auth() { }
 
-    public string? Login { get; }
+    public Auth()
+    {
+    }
+
+    public string? Login { get; private set; }
 
     public string? Password { get; private set; }
 
-    public Guid Salt { get; }
+    public Guid Salt { get;  private set; }
 
-    public Roles Roles { get; }
+    public Roles Roles { get;  private set; }
 
-    public User? User { get; }
+    public User? User { get; private set; }
 
     public void UpdatePassword(string password) => Password = password;
 }

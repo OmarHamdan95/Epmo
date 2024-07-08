@@ -14,15 +14,6 @@ namespace Epmo.Database.Migrations
             migrationBuilder.EnsureSchema(
                 name: "EPMO");
 
-            migrationBuilder.EnsureSchema(
-                name: "Auth");
-
-            migrationBuilder.EnsureSchema(
-                name: "Example");
-
-            migrationBuilder.EnsureSchema(
-                name: "User");
-
             migrationBuilder.CreateTable(
                 name: "ATTACHMENT_GROUPS",
                 schema: "EPMO",
@@ -44,8 +35,8 @@ namespace Epmo.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Example",
-                schema: "Example",
+                name: "EXAMPLES",
+                schema: "EPMO",
                 columns: table => new
                 {
                     ID = table.Column<long>(type: "bigint", nullable: false)
@@ -60,7 +51,7 @@ namespace Epmo.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Example", x => x.ID);
+                    table.PrimaryKey("PK_EXAMPLES", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -105,8 +96,8 @@ namespace Epmo.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
-                schema: "User",
+                name: "USERS",
+                schema: "EPMO",
                 columns: table => new
                 {
                     ID = table.Column<long>(type: "bigint", nullable: false)
@@ -123,7 +114,7 @@ namespace Epmo.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.ID);
+                    table.PrimaryKey("PK_USERS", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -298,17 +289,17 @@ namespace Epmo.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Auth",
-                schema: "Auth",
+                name: "AUTHS",
+                schema: "EPMO",
                 columns: table => new
                 {
                     ID = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Login = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    LOGIN = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PASSWORD = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    Salt = table.Column<Guid>(type: "uniqueidentifier", maxLength: 1000, nullable: false),
-                    Roles = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    SALT = table.Column<Guid>(type: "uniqueidentifier", maxLength: 1000, nullable: false),
+                    ROLES = table.Column<int>(type: "int", nullable: false),
+                    USER_ID = table.Column<long>(type: "bigint", nullable: false),
                     CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CREATED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -318,12 +309,12 @@ namespace Epmo.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Auth", x => x.ID);
+                    table.PrimaryKey("PK_AUTHS", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Auth_User_UserId",
-                        column: x => x.UserId,
-                        principalSchema: "User",
-                        principalTable: "User",
+                        name: "FK_AUTHS_USERS_USER_ID",
+                        column: x => x.USER_ID,
+                        principalSchema: "EPMO",
+                        principalTable: "USERS",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -374,15 +365,15 @@ namespace Epmo.Database.Migrations
                 });
 
             migrationBuilder.InsertData(
-                schema: "User",
-                table: "User",
+                schema: "EPMO",
+                table: "USERS",
                 columns: new[] { "ID", "CODE", "CREATED_BY", "CREATED_DATE", "EMAIL", "IS_DELETED", "MODIFIED_BY", "MODIFIED_DATE", "NAME", "STATUS" },
                 values: new object[] { 1L, null, null, null, "administrator@administrator.com", false, null, null, "Administrator", 1 });
 
             migrationBuilder.InsertData(
-                schema: "Auth",
-                table: "Auth",
-                columns: new[] { "ID", "CODE", "CREATED_BY", "CREATED_DATE", "IS_DELETED", "Login", "MODIFIED_BY", "MODIFIED_DATE", "PASSWORD", "Roles", "Salt", "UserId" },
+                schema: "EPMO",
+                table: "AUTHS",
+                columns: new[] { "ID", "CODE", "CREATED_BY", "CREATED_DATE", "IS_DELETED", "LOGIN", "MODIFIED_BY", "MODIFIED_DATE", "PASSWORD", "ROLES", "SALT", "USER_ID" },
                 values: new object[] { 1L, null, null, null, false, "admin", null, null, "O34uMN1Vho2IYcSM7nlXEqn57RZ8VEUsJwH++sFr0i3MSHJVx8J3PQGjhLR3s5i4l0XWUnCnymQ/EbRmzvLy8uMWREZu7vZI+BqebjAl5upYKMMQvlEcBeyLcRRTTBpYpv80m/YCZQmpig4XFVfIViLLZY/Kr5gBN5dkQf25rK+u88gtSXAyPDkW+hVS+dW4AmxrnaNFZks0Zzcd5xlb12wcF/q96cc4htHFzvOH9jtN98N5EBIXSvdUVnFc9kBuRTVytATZA7gITbs//hkxvNQ3eody5U9hjdH6D+AP0vVt5unZlTZ+gInn8Ze7AC5o6mn0Y3ylGO1CBJSHU9c/BcFY9oknn+XYk9ySCoDGctMqDbvOBcvSTBkKcrCzev2KnX7xYmC3yNz1Q5oPVKgnq4mc1iuldMlCxse/IDGMJB2FRdTCLV5KNS4IZ1GB+dw3tMvcEEtmXmgT2zKN5+kUkOxhlv5g1ZLgXzWjVJeKb5uZpsn3WK5kt8T+kzMoxHd5i8HxsU2uvy9GopxAnaV0WNsBPqTGkRllSxARl4ZN3hJqUla553RT49tJxbs+N03OmkYhjq+L0aKJ1AC+7G+rdjegiAQZB+3mdE7a2Pne2kYtpMoCmNMKdm9jOOVpfXJqZMQul9ltJSlAY6LPrHFUB3mw61JBNzx+sZgYN29GfDY=", 3, new Guid("79005744-e69a-4b09-996b-08fe0b70cbb9"), 1L });
 
             migrationBuilder.CreateIndex(
@@ -392,24 +383,24 @@ namespace Epmo.Database.Migrations
                 column: "ATTACHMENT_GROUP_ID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Auth_Login",
-                schema: "Auth",
-                table: "Auth",
-                column: "Login",
+                name: "IX_AUTHS_LOGIN",
+                schema: "EPMO",
+                table: "AUTHS",
+                column: "LOGIN",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Auth_Salt",
-                schema: "Auth",
-                table: "Auth",
-                column: "Salt",
+                name: "IX_AUTHS_SALT",
+                schema: "EPMO",
+                table: "AUTHS",
+                column: "SALT",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Auth_UserId",
-                schema: "Auth",
-                table: "Auth",
-                column: "UserId",
+                name: "IX_AUTHS_USER_ID",
+                schema: "EPMO",
+                table: "AUTHS",
+                column: "USER_ID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -473,9 +464,9 @@ namespace Epmo.Database.Migrations
                 column: "TRANSLATION_ID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_EMAIL",
-                schema: "User",
-                table: "User",
+                name: "IX_USERS_EMAIL",
+                schema: "EPMO",
+                table: "USERS",
                 column: "EMAIL",
                 unique: true);
         }
@@ -488,16 +479,16 @@ namespace Epmo.Database.Migrations
                 schema: "EPMO");
 
             migrationBuilder.DropTable(
-                name: "Auth",
-                schema: "Auth");
+                name: "AUTHS",
+                schema: "EPMO");
 
             migrationBuilder.DropTable(
                 name: "DYNAMIC_FIELDS",
                 schema: "EPMO");
 
             migrationBuilder.DropTable(
-                name: "Example",
-                schema: "Example");
+                name: "EXAMPLES",
+                schema: "EPMO");
 
             migrationBuilder.DropTable(
                 name: "LOOKUP_VALUES",
@@ -516,8 +507,8 @@ namespace Epmo.Database.Migrations
                 schema: "EPMO");
 
             migrationBuilder.DropTable(
-                name: "User",
-                schema: "User");
+                name: "USERS",
+                schema: "EPMO");
 
             migrationBuilder.DropTable(
                 name: "LOOKUPS",

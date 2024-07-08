@@ -156,7 +156,8 @@ namespace Epmo.Database.Migrations
                     b.Property<string>("Login")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("LOGIN");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)")
@@ -173,14 +174,17 @@ namespace Epmo.Database.Migrations
                         .HasColumnName("PASSWORD");
 
                     b.Property<int>("Roles")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ROLES");
 
                     b.Property<Guid>("Salt")
                         .HasMaxLength(1000)
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("SALT");
 
                     b.Property<long>("UserId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("USER_ID");
 
                     b.HasKey("Id");
 
@@ -193,7 +197,7 @@ namespace Epmo.Database.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Auth", "Auth");
+                    b.ToTable("AUTHS", "EPMO");
 
                     b.HasData(
                         new
@@ -316,7 +320,7 @@ namespace Epmo.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Example", "Example");
+                    b.ToTable("EXAMPLES", "EPMO");
                 });
 
             modelBuilder.Entity("Epmo.Domain.Language", b =>
@@ -723,7 +727,7 @@ namespace Epmo.Database.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("User", "User");
+                    b.ToTable("USERS", "EPMO");
 
                     b.HasData(
                         new

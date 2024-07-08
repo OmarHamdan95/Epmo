@@ -4,7 +4,7 @@ public sealed class ExampleConfiguration : IEntityTypeConfiguration<Example>
 {
     public void Configure(EntityTypeBuilder<Example> builder)
     {
-        builder.ToTable(nameof(Example), nameof(Example));
+       // builder.ToTable(nameof(Example), nameof(Example));
 
         builder.HasKey(entity => entity.Id);
 
