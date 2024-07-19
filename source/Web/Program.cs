@@ -37,8 +37,13 @@ application.MapControllers();
 
 application.ConfigureMapster();
 
-// To Do Move It To endpoint Register And Remove all Controller To be Minimal Api
-application.MapGet("/test", () => "Hello, World!");
+application.UseAuthentication();
+application.UseAuthorization();
 
+// To Do Move It To endpoint Register And Remove all Controller To be Minimal Api
+//application.MapGet("/test", () => "Hello, World!");
+
+
+application.RegisterEndPoints();
 
 application.Run();

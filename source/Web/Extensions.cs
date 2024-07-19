@@ -8,6 +8,7 @@ public static class Extensions
     public static void ConfigureMapster(this IApplicationBuilder builder)
     {
         TypeAdapterConfig.GlobalSettings.Default.PreserveReference(true);
+        TypeAdapterConfig.GlobalSettings.Default.MaxDepth(3);
     }
 
     public static void AddProfiler(this IServiceCollection service)
