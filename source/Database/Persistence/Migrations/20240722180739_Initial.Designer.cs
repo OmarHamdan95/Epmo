@@ -4,16 +4,19 @@ using Epmo.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Epmo.Database.Migrations
+namespace Epmo.Database.Persistence.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240722180739_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -269,13 +272,11 @@ namespace Epmo.Database.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("MODIFIED_DATE");
 
-                    b.Property<long?>("NameId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("NAME_ID");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("NAME");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("NameId");
 
                     b.ToTable("DYNAMIC_FIELDS", "EPMO");
                 });
@@ -422,9 +423,9 @@ namespace Epmo.Database.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("PARENT_ID");
 
-                    b.Property<long?>("TranslationId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("TRANSLATION_ID");
+                    b.Property<string>("Translation")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("TRANSLATION");
 
                     b.Property<DateTime?>("ValidFrom")
                         .HasColumnType("datetime2")
@@ -437,8 +438,6 @@ namespace Epmo.Database.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ParentId");
-
-                    b.HasIndex("TranslationId");
 
                     b.ToTable("LOOKUPS", "EPMO");
                 });
@@ -496,9 +495,9 @@ namespace Epmo.Database.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("PARENT_ID");
 
-                    b.Property<long?>("TranslationId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("TRANSLATION_ID");
+                    b.Property<string>("Translation")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("TRANSLATION");
 
                     b.Property<DateTime?>("ValidFrom")
                         .HasColumnType("datetime2")
@@ -513,8 +512,6 @@ namespace Epmo.Database.Migrations
                     b.HasIndex("LookupId");
 
                     b.HasIndex("ParentId");
-
-                    b.HasIndex("TranslationId");
 
                     b.ToTable("LOOKUP_VALUES", "EPMO");
                 });
@@ -556,9 +553,9 @@ namespace Epmo.Database.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("MODIFIED_DATE");
 
-                    b.Property<long?>("NameId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("NAME_ID");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("NAME");
 
                     b.Property<long?>("ParentId")
                         .HasColumnType("bigint")
@@ -573,8 +570,6 @@ namespace Epmo.Database.Migrations
                         .HasColumnName("ROUTE");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("NameId");
 
                     b.HasIndex("ParentId");
 
@@ -760,28 +755,13 @@ namespace Epmo.Database.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Epmo.Domain.DynamicField", b =>
-                {
-                    b.HasOne("Epmo.Domain.Translation", "Name")
-                        .WithMany()
-                        .HasForeignKey("NameId");
-
-                    b.Navigation("Name");
-                });
-
             modelBuilder.Entity("Epmo.Domain.Lookup", b =>
                 {
                     b.HasOne("Epmo.Domain.Lookup", "Parent")
                         .WithMany()
                         .HasForeignKey("ParentId");
 
-                    b.HasOne("Epmo.Domain.Translation", "Translation")
-                        .WithMany()
-                        .HasForeignKey("TranslationId");
-
                     b.Navigation("Parent");
-
-                    b.Navigation("Translation");
                 });
 
             modelBuilder.Entity("Epmo.Domain.LookupValue", b =>
@@ -794,28 +774,16 @@ namespace Epmo.Database.Migrations
                         .WithMany()
                         .HasForeignKey("ParentId");
 
-                    b.HasOne("Epmo.Domain.Translation", "Translation")
-                        .WithMany()
-                        .HasForeignKey("TranslationId");
-
                     b.Navigation("Lookup");
 
                     b.Navigation("Parent");
-
-                    b.Navigation("Translation");
                 });
 
             modelBuilder.Entity("Epmo.Domain.SystemMenu", b =>
                 {
-                    b.HasOne("Epmo.Domain.Translation", "Name")
-                        .WithMany()
-                        .HasForeignKey("NameId");
-
                     b.HasOne("Epmo.Domain.SystemMenu", "Parent")
                         .WithMany("Child")
                         .HasForeignKey("ParentId");
-
-                    b.Navigation("Name");
 
                     b.Navigation("Parent");
                 });

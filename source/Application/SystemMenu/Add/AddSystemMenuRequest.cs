@@ -1,6 +1,6 @@
 ﻿namespace Epmo.Application;
 
-public sealed record AddSystemMenuRequest(TranslationModel? Name,
+public sealed record AddSystemMenuRequest(LocalizedTextModel? Name,
     string? Icon,
     string? Route,
     string? Permission,

@@ -1,5 +1,7 @@
 using System.Reflection;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder();
 
@@ -17,7 +19,21 @@ builder.Services.AddContext<Context>(options =>
 builder.Services.AddClassesMatchingInterfaces(nameof(Epmo));
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 //builder.Services.AddSwaggerGen();
-builder.Services.AddEndpointsApiExplorer().AddSwaggerGen();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "JadeWebAPI", Version = "v1" });
+
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Description = "JWT token must be provided",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = JwtBearerDefaults.AuthenticationScheme
+    });
+});
+
 builder.Services.AddProfiler();
 builder.Services.AddControllers().AddJsonOptions().AddAuthorizationPolicy();
 

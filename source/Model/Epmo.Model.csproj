@@ -2,4 +2,7 @@
   <PropertyGroup>
     <Nullable>annotations</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Epmo.Domain.csproj" />
+  </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿using Epmo.Domain.Common;
+using Mapster;
 namespace Epmo.Application;
 using static System.Net.HttpStatusCode;
 
@@ -20,7 +21,7 @@ public sealed record AddSystemMenuHandler : IRequestHandler<AddSystemMenuRequest
     public async Task<Result<long>> Handle(AddSystemMenuRequest request , CancellationToken cancellationToken)
     {
 
-        var systemMenu = new SystemMenu(request.Name.Adapt<Translation>(), request.Icon , request.Route , request.Permission,
+        var systemMenu = new SystemMenu(request.Name.Adapt<LocalizedText>(), request.Icon , request.Route , request.Permission,
             request.Parent.Adapt<SystemMenu>() , request.Child.Adapt<List<SystemMenu>>());
 
         await _systemMenuRepository.AddAsync(systemMenu);

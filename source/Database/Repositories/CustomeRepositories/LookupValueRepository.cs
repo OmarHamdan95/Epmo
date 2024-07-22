@@ -50,7 +50,7 @@ public class LookupValueRepository : EFRepository<LookupValue> ,ILookupValueRepo
         //query = query.Where(_ => _.ValidTo.HasValue && _.ValidTo >= DateTime.Now);
 
         if (!text.IsNullOrEmpty())
-            query = query.Where(_ => _.Translation.TranslationValues.Any(t=> t.TransaltionValue.Trim().Contains(text.Trim())));
+            query = query.Where(_ => _.Translation.Any(t=> t.Text.Trim().Contains(text.Trim())));
 
        var result = await query.Take(DatabaseConstants.LookupPageSize)
             .ProjectToType<ProjectionType>().ToListAsync();

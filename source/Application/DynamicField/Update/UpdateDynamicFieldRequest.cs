@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Epmo.Application;
 
-public sealed record UpdateDynamicFieldRequest(TranslationModel? Name,
+public sealed record UpdateDynamicFieldRequest(LocalizedTextModel? Name,
     LookupValueModel? EntityType,
     LookupValueModel? DynamicFieldType,
     string? DynamicFieldRegex,

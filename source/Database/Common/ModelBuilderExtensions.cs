@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
+using System.Text.Json;
 using Epmo.Database.DataBaseType;
 using Epmo.Domain.Common;
 using Epmo.Domain.MarkarEntity;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Epmo.Database.Common;
 
@@ -28,6 +30,11 @@ public static class ModelBuilderExtensions
             {
                 if (property.PropertyType.IsSubclassOf(typeof(ValueObject)))
                     entityConfig.OwnsOne(property.PropertyType, property.Name);
+
+
+
+                if (property.PropertyType == typeof(LocalizedText))
+                    entityConfig.Property(property.Name).HasConversion<SerializerLocalizedTextConverter>().HasColumnType("nvarchar(max)");
 
                 // if (property.PropertyType.GetAttributes<NotMappedAttribute>().IsNotNull())
                 //     continue;
@@ -72,4 +79,13 @@ public static class SoftDeleteQueryExtension
         Expression<Func<TEntity, bool>> filter = x => !x.IsDeleted;
         return filter;
     }
+
+
+    // public static EntityTypeBuilder HasLocalizedText<TEntity>(this EntityTypeBuilder builder,
+    //     Expression<Func< IEnumerable<Localization>>> property)
+    // {
+    //     builder.Property(property).HasColumnType("jsonb");
+    //
+    //     return builder;
+    // }
 }

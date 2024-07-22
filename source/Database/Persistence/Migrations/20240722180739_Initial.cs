@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Epmo.Database.Migrations
+namespace Epmo.Database.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -32,6 +32,32 @@ namespace Epmo.Database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ATTACHMENT_GROUPS", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DYNAMIC_FIELDS",
+                schema: "EPMO",
+                columns: table => new
+                {
+                    ID = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NAME = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ENTITY_TYPE_ID = table.Column<long>(type: "bigint", nullable: true),
+                    DYNAMIC_FIELD_TYPE_ID = table.Column<long>(type: "bigint", nullable: true),
+                    DYNAMIC_FIELD_REGEX = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DYNAMIC_FIELD_MIN_VALUE = table.Column<long>(type: "bigint", nullable: true),
+                    DYNAMIC_FIELD_MAX_VALUE = table.Column<long>(type: "bigint", nullable: true),
+                    DYNAMIC_FIELD_LOOKUP_TYPE_ID = table.Column<long>(type: "bigint", nullable: true),
+                    CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CREATED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IS_DELETED = table.Column<bool>(type: "bit", nullable: false),
+                    CODE = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DYNAMIC_FIELDS", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,6 +100,68 @@ namespace Epmo.Database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LANGUAGES", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LOOKUPS",
+                schema: "EPMO",
+                columns: table => new
+                {
+                    ID = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PARENT_ID = table.Column<long>(type: "bigint", nullable: true),
+                    LINKS = table.Column<long>(type: "bigint", nullable: true),
+                    IS_SYSTEM = table.Column<bool>(type: "bit", nullable: false),
+                    DATA_TYPE = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CREATED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IS_DELETED = table.Column<bool>(type: "bit", nullable: false),
+                    CODE = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VALID_FROM = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    VALID_TO = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    TRANSLATION = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LOOKUPS", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_LOOKUPS_LOOKUPS_PARENT_ID",
+                        column: x => x.PARENT_ID,
+                        principalSchema: "EPMO",
+                        principalTable: "LOOKUPS",
+                        principalColumn: "ID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SYSTEM_MENUS",
+                schema: "EPMO",
+                columns: table => new
+                {
+                    ID = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NAME = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ICON = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ROUTE = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PERMISSION = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PARENT_ID = table.Column<long>(type: "bigint", nullable: true),
+                    CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CREATED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IS_DELETED = table.Column<bool>(type: "bit", nullable: false),
+                    CODE = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SYSTEM_MENUS", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_SYSTEM_MENUS_SYSTEM_MENUS_PARENT_ID",
+                        column: x => x.PARENT_ID,
+                        principalSchema: "EPMO",
+                        principalTable: "SYSTEM_MENUS",
+                        principalColumn: "ID");
                 });
 
             migrationBuilder.CreateTable(
@@ -149,48 +237,17 @@ namespace Epmo.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DYNAMIC_FIELDS",
+                name: "LOOKUP_VALUES",
                 schema: "EPMO",
                 columns: table => new
                 {
                     ID = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NAME_ID = table.Column<long>(type: "bigint", nullable: true),
-                    ENTITY_TYPE_ID = table.Column<long>(type: "bigint", nullable: true),
-                    DYNAMIC_FIELD_TYPE_ID = table.Column<long>(type: "bigint", nullable: true),
-                    DYNAMIC_FIELD_REGEX = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DYNAMIC_FIELD_MIN_VALUE = table.Column<long>(type: "bigint", nullable: true),
-                    DYNAMIC_FIELD_MAX_VALUE = table.Column<long>(type: "bigint", nullable: true),
-                    DYNAMIC_FIELD_LOOKUP_TYPE_ID = table.Column<long>(type: "bigint", nullable: true),
-                    CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CREATED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IS_DELETED = table.Column<bool>(type: "bit", nullable: false),
-                    CODE = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DYNAMIC_FIELDS", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_DYNAMIC_FIELDS_TRANSLATIONS_NAME_ID",
-                        column: x => x.NAME_ID,
-                        principalSchema: "EPMO",
-                        principalTable: "TRANSLATIONS",
-                        principalColumn: "ID");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "LOOKUPS",
-                schema: "EPMO",
-                columns: table => new
-                {
-                    ID = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LOOKUP_ID = table.Column<long>(type: "bigint", nullable: true),
                     PARENT_ID = table.Column<long>(type: "bigint", nullable: true),
-                    LINKS = table.Column<long>(type: "bigint", nullable: true),
+                    ORDER = table.Column<long>(type: "bigint", nullable: true),
                     IS_SYSTEM = table.Column<bool>(type: "bit", nullable: false),
-                    DATA_TYPE = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    COLOR = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CREATED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -199,58 +256,22 @@ namespace Epmo.Database.Migrations
                     CODE = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     VALID_FROM = table.Column<DateTime>(type: "datetime2", nullable: true),
                     VALID_TO = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    TRANSLATION_ID = table.Column<long>(type: "bigint", nullable: true)
+                    TRANSLATION = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LOOKUPS", x => x.ID);
+                    table.PrimaryKey("PK_LOOKUP_VALUES", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_LOOKUPS_LOOKUPS_PARENT_ID",
-                        column: x => x.PARENT_ID,
+                        name: "FK_LOOKUP_VALUES_LOOKUPS_LOOKUP_ID",
+                        column: x => x.LOOKUP_ID,
                         principalSchema: "EPMO",
                         principalTable: "LOOKUPS",
                         principalColumn: "ID");
                     table.ForeignKey(
-                        name: "FK_LOOKUPS_TRANSLATIONS_TRANSLATION_ID",
-                        column: x => x.TRANSLATION_ID,
-                        principalSchema: "EPMO",
-                        principalTable: "TRANSLATIONS",
-                        principalColumn: "ID");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SYSTEM_MENUS",
-                schema: "EPMO",
-                columns: table => new
-                {
-                    ID = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NAME_ID = table.Column<long>(type: "bigint", nullable: true),
-                    ICON = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ROUTE = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PERMISSION = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PARENT_ID = table.Column<long>(type: "bigint", nullable: true),
-                    CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CREATED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IS_DELETED = table.Column<bool>(type: "bit", nullable: false),
-                    CODE = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SYSTEM_MENUS", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_SYSTEM_MENUS_SYSTEM_MENUS_PARENT_ID",
+                        name: "FK_LOOKUP_VALUES_LOOKUP_VALUES_PARENT_ID",
                         column: x => x.PARENT_ID,
                         principalSchema: "EPMO",
-                        principalTable: "SYSTEM_MENUS",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "FK_SYSTEM_MENUS_TRANSLATIONS_NAME_ID",
-                        column: x => x.NAME_ID,
-                        principalSchema: "EPMO",
-                        principalTable: "TRANSLATIONS",
+                        principalTable: "LOOKUP_VALUES",
                         principalColumn: "ID");
                 });
 
@@ -319,51 +340,6 @@ namespace Epmo.Database.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "LOOKUP_VALUES",
-                schema: "EPMO",
-                columns: table => new
-                {
-                    ID = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    LOOKUP_ID = table.Column<long>(type: "bigint", nullable: true),
-                    PARENT_ID = table.Column<long>(type: "bigint", nullable: true),
-                    ORDER = table.Column<long>(type: "bigint", nullable: true),
-                    IS_SYSTEM = table.Column<bool>(type: "bit", nullable: false),
-                    COLOR = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CREATED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IS_DELETED = table.Column<bool>(type: "bit", nullable: false),
-                    CODE = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    VALID_FROM = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    VALID_TO = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    TRANSLATION_ID = table.Column<long>(type: "bigint", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LOOKUP_VALUES", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_LOOKUP_VALUES_LOOKUPS_LOOKUP_ID",
-                        column: x => x.LOOKUP_ID,
-                        principalSchema: "EPMO",
-                        principalTable: "LOOKUPS",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "FK_LOOKUP_VALUES_LOOKUP_VALUES_PARENT_ID",
-                        column: x => x.PARENT_ID,
-                        principalSchema: "EPMO",
-                        principalTable: "LOOKUP_VALUES",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "FK_LOOKUP_VALUES_TRANSLATIONS_TRANSLATION_ID",
-                        column: x => x.TRANSLATION_ID,
-                        principalSchema: "EPMO",
-                        principalTable: "TRANSLATIONS",
-                        principalColumn: "ID");
-                });
-
             migrationBuilder.InsertData(
                 schema: "EPMO",
                 table: "USERS",
@@ -404,12 +380,6 @@ namespace Epmo.Database.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_DYNAMIC_FIELDS_NAME_ID",
-                schema: "EPMO",
-                table: "DYNAMIC_FIELDS",
-                column: "NAME_ID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_LOOKUP_VALUES_LOOKUP_ID",
                 schema: "EPMO",
                 table: "LOOKUP_VALUES",
@@ -422,28 +392,10 @@ namespace Epmo.Database.Migrations
                 column: "PARENT_ID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LOOKUP_VALUES_TRANSLATION_ID",
-                schema: "EPMO",
-                table: "LOOKUP_VALUES",
-                column: "TRANSLATION_ID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_LOOKUPS_PARENT_ID",
                 schema: "EPMO",
                 table: "LOOKUPS",
                 column: "PARENT_ID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_LOOKUPS_TRANSLATION_ID",
-                schema: "EPMO",
-                table: "LOOKUPS",
-                column: "TRANSLATION_ID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SYSTEM_MENUS_NAME_ID",
-                schema: "EPMO",
-                table: "SYSTEM_MENUS",
-                column: "NAME_ID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SYSTEM_MENUS_PARENT_ID",

@@ -16,7 +16,7 @@ public class LookupValue : LookupBase
 
     public LookupValue(long id) => Id = id;
 
-    public LookupValue(string code, long? order, string? color, Translation translation, long? parentId)
+    public LookupValue(string code, long? order, string? color, LocalizedText translation, long? parentId)
     {
         Code = code;
         Order = order;

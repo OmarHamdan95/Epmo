@@ -3,7 +3,7 @@
 public sealed record DynamicFieldModel
 {
     public long Id { get; init; }
-    public TranslationModel? Name { get; init; }
+    public LocalizationModel? Name { get; init; }
     public LookupValueModel? EntityType { get; init; }
     public LookupValueModel? DynamicFieldType { get; init; }
     public string? DynamicFieldRegex { get; init; }

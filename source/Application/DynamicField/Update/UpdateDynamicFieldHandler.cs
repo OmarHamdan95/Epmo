@@ -1,3 +1,4 @@
+using Epmo.Domain.Common;
 using Mapster;
 using static System.Net.HttpStatusCode;
 
@@ -24,7 +25,7 @@ public sealed record UpdateDynamicFieldHandler : IRequestHandler<UpdateDynamicFi
 
         if (dynamicField is null) return new Result(NotFound);
 
-        dynamicField.UpdateDynamicField(request.Name.Adapt<Translation>(), request.EntityType.Adapt<LookupValue>() ,
+        dynamicField.UpdateDynamicField(request.Name.Adapt<LocalizedText>(), request.EntityType.Adapt<LookupValue>() ,
             request.DynamicFieldType.Adapt<LookupValue>(),request.DynamicFieldRegex,request.DynamicFieldMinValue ,request.DynamicFieldMaxValue,
             request.DynamicFieldLookupType.Adapt<LookupValue>());
 

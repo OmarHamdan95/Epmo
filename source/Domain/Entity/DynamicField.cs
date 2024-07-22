@@ -2,7 +2,7 @@
 
 public class DynamicField : BaseAuditableEntity , IAggregateRoot
 {
-    public Translation? Name { get; set; }
+    public LocalizedText? Name { get; set; }
     private LookupValue? EntityType { get; set; }
     public long? EntityTypeId { get; set; }
     private LookupValue? DynamicFieldType { get; set; }
@@ -20,7 +20,7 @@ public class DynamicField : BaseAuditableEntity , IAggregateRoot
 
     public DynamicField(long id) => Id = id;
 
-    public DynamicField(Translation? name, LookupValue? entityType, LookupValue? dynamicFieldType,
+    public DynamicField(LocalizedText? name, LookupValue? entityType, LookupValue? dynamicFieldType,
         string? dynamicFieldRegex, long? dynamicFieldMinValue, long? dynamicFieldMaxValue,
         LookupValue? dynamicFieldLookupType)
     {
@@ -34,7 +34,7 @@ public class DynamicField : BaseAuditableEntity , IAggregateRoot
     }
 
 
-    public void UpdateDynamicField(Translation? name, LookupValue? entityType, LookupValue? dynamicFieldType,
+    public void UpdateDynamicField(LocalizedText? name, LookupValue? entityType, LookupValue? dynamicFieldType,
         string? dynamicFieldRegex, long? dynamicFieldMinValue, long? dynamicFieldMaxValue,
         LookupValue? dynamicFieldLookupType)
     {

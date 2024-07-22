@@ -4,7 +4,7 @@ public class Lookup : LookupBase ,IAggregateRoot
 {
     public Lookup(){}
 
-    public Lookup(string? code, Translation? translation ,
+    public Lookup(string? code, LocalizedText? translation ,
         string? dataType , long? parentId)
     {
         Code = code;
@@ -32,7 +32,7 @@ public class Lookup : LookupBase ,IAggregateRoot
     public virtual string? DataType { get; set; }
 
 
-    public void UpdateLookup(Translation? translation, List<LookupValue>? lookupValues, string? dataType,
+    public void UpdateLookup(LocalizedText? translation, List<LookupValue>? lookupValues, string? dataType,
         Lookup? parent)
     {
         Translation = translation;

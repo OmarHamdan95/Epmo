@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿using Epmo.Domain.Common;
+using Mapster;
 
 namespace Epmo.Application;
 
@@ -22,8 +23,7 @@ public sealed record AddLookupHandler : IRequestHandler<AddLookupRequest, Result
     public async Task<Result<long>> Handle(AddLookupRequest request, CancellationToken cancellationToken)
     {
         var lookup = new Lookup(request.Code,
-            new Translation(request.TranslationModel.Code,
-                request.TranslationModel.TranslationValues.Adapt<List<TranslationValue>>()),
+           request.TranslationModel.Adapt<LocalizedText>(),
             request.dataType,
             request.parent?.Id ?? null);
 
@@ -33,7 +33,7 @@ public sealed record AddLookupHandler : IRequestHandler<AddLookupRequest, Result
             {
                 lookup.AddLookupValue(new
                     LookupValue(value.Code , value.Order, value.Color,
-                        new Translation(value.Translation.Code , value.Translation.TranslationValues.Adapt<List<TranslationValue>>()),
+                        value.Translation.Adapt<LocalizedText>(),
                         value.Parent?.Id ?? null));
             }
         }

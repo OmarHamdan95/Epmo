@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿using Epmo.Domain.Common;
+using Mapster;
 namespace Epmo.Application;
 using static System.Net.HttpStatusCode;
 
@@ -19,7 +20,7 @@ public sealed record AddDynamicFieldHandler : IRequestHandler<AddDynamicFieldReq
     public async Task<Result<long>> Handle(AddDynamicFieldRequest request , CancellationToken cancellationToken)
     {
 
-        var dynamicField = new DynamicField(request.Name.Adapt<Translation>(), request.EntityType.Adapt<LookupValue>() ,
+        var dynamicField = new DynamicField(request.Name.Adapt<LocalizedText>(), request.EntityType.Adapt<LookupValue>() ,
             request.DynamicFieldType.Adapt<LookupValue>(),request.DynamicFieldRegex,request.DynamicFieldMinValue ,request.DynamicFieldMaxValue,
             request.DynamicFieldLookupType.Adapt<LookupValue>());
 

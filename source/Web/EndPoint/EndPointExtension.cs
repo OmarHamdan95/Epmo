@@ -7,6 +7,7 @@ public static class EndPointExtension
     {
         routes.RegisterAuthEndPoints();
         routes.RegisterAttachmentEndpoints();
+        routes.RegisterDynamicFieldEndPoints();
     }
 
 

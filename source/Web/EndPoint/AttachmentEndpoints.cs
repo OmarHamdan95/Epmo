@@ -5,7 +5,7 @@ public static class AttachmentEndpoints
 {
     public static void RegisterAttachmentEndpoints(this IEndpointRouteBuilder routes)
     {
-        var attachemnt = routes.MapGroup("/api/attachemnt").RequireAuthorization();
+        var attachemnt = routes.MapGroup("/api/attachemnt").RequireAuthorization().WithTags(nameof(AttachmentEndpoints));
 
         attachemnt.MapPost("",
             (IMediator mediator, AddAttachmenRequest request) =>
@@ -31,8 +31,8 @@ public static class AttachmentEndpoints
                 return Results.Ok(mediator.Send(request).ApiResult());
             });
 
-        attachemnt.MapPost("list",
-            (IMediator mediator, GridAttachmenRequest request) =>
+        attachemnt.MapGet("list",
+            (IMediator mediator) =>
             {
                 return Results.Ok(mediator.Send(new ListAttachmenRequest()).ApiResult());
             });

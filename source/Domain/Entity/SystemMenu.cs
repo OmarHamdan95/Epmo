@@ -2,7 +2,7 @@
 
 public class SystemMenu : BaseAuditableEntity , IAggregateRoot
 {
-    public Translation? Name { get; set; }
+    public LocalizedText? Name { get; set; }
     public string? Icon { get; set; }
     public string? Route { get; set; }
     public string? Permission { get; set; }
@@ -15,7 +15,7 @@ public class SystemMenu : BaseAuditableEntity , IAggregateRoot
 
     public SystemMenu(long id) => Id = id;
 
-    public SystemMenu(Translation? name, string? icon, string? route, string? permission, SystemMenu? parent,
+    public SystemMenu(LocalizedText? name, string? icon, string? route, string? permission, SystemMenu? parent,
         List<SystemMenu> child)
     {
         Name = name;

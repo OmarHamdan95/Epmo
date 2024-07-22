@@ -1,7 +1,7 @@
 ﻿namespace Epmo.Application;
 
 public sealed record AddDynamicFieldRequest(long Id,
-    TranslationModel? Name,
+    LocalizedTextModel? Name,
     LookupValueModel? EntityType,
     LookupValueModel? DynamicFieldType,
     string? DynamicFieldRegex,

@@ -1,3 +1,4 @@
+using Epmo.Domain.Common;
 using Mapster;
 using static System.Net.HttpStatusCode;
 
@@ -24,7 +25,7 @@ public sealed record UpdateLookupHandler : IRequestHandler<UpdateLookupRequest, 
 
         if (lookup is null) return new Result(NotFound);
 
-        lookup.UpdateLookup(request.TranslationModel.Adapt<Translation>() , request.LookupValueModels.Adapt<List<LookupValue>>(),
+        lookup.UpdateLookup(request.TranslationModel.Adapt<LocalizedText>() , request.LookupValueModels.Adapt<List<LookupValue>>(),
             request.dataType,request.parent.Adapt<Lookup>());
 
         await _lookupRepository.UpdateAsync(lookup);
